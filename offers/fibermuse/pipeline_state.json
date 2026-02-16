@@ -1,0 +1,16 @@
+{
+  "project_name": "fibermuse",
+  "brand": "FiberMuse™",
+  "product_type": "supplement",
+  "has_ingredients": true,
+  "created_at": "2026-02-14",
+  "steps": {
+    "1_market_research": { "status": "complete", "completed_at": "2026-02-14", "file": "01_market_research.md" },
+    "2_competitor_research": { "status": "complete", "completed_at": "2026-02-14", "file": "02_competitor_research.md" },
+    "3_psychographic_research": { "status": "complete", "completed_at": "2026-02-14", "file": "03_psychographic_research.md" },
+    "4_ingredient_research": { "status": "complete", "completed_at": "2026-02-14", "file": "04_ingredient_research.md" },
+    "5_unique_mechanism": { "status": "complete", "completed_at": "2026-02-14", "file": "05_unique_mechanism.md" },
+    "6_unified_brief": { "status": "complete", "completed_at": "2026-02-14", "file": "06_unified_brief.md" },
+    "7_vsl_brief": { "status": "complete", "completed_at": "2026-02-14", "file": "07_vsl_brief.md" }
+  }
+}

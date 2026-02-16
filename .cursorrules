@@ -1,0 +1,58 @@
+# Certified Concealed — E-Book Rewriting Project
+
+You are helping rewrite "Know Your Ammo: The Complete Self-Defense Ammunition Guide" (280 pages) into 100% original content for the "Certified Concealed" brand.
+
+## CRITICAL: Read RULES.md First
+
+Before doing ANY work on this project, read the file `RULES.md` in the project root. It contains all rewriting rules, formatting specifications, and legal compliance requirements. Follow them exactly.
+
+## Project Structure
+
+```
+source-text/         ← Original PDF content extracted to chapter files
+chapters/            ← YOUR OUTPUT — rewritten chapters go here  
+output/              ← Generated .docx files
+generate.js          ← Node.js script for .docx generation
+RULES.md             ← Master rules document (READ THIS FIRST)
+```
+
+## Workflow
+
+1. User says "rewrite chapter X" → Read `source-text/chapter_XX.md`
+2. Read `RULES.md` to refresh on all rules
+3. Rewrite the chapter following ALL rules (100% original language, no author names, neutral products)
+4. Save to `chapters/chapter_XX.md`
+5. When user asks to generate a .docx → use `generate.js` as template
+
+## Key Rules Summary (full details in RULES.md)
+
+- **100% original language** — every sentence rewritten, restructured paragraphs, different vocabulary
+- **No author names** — remove all, replace with generic references
+- **Neutral product mentions** — brands as educational examples only, no endorsements
+- **Georgia font** throughout — sizes: Ch# 11pt, Title 15pt, Headings 15pt, Body 12pt
+- **US Letter** 8.5x11, 1" margins, 1.5 line spacing
+- **Key Takeaway boxes** — 1-2 per chapter, bold italic, grey left border
+- **Image placeholders** — 2-4 per chapter, detailed descriptive text in brackets
+- **Each chapter** gets: number, title, image, opening paragraphs, sections with headings, takeaway boxes
+
+## Content Quality Standards
+
+- Read the ENTIRE source chapter before writing anything
+- Restructure the flow — change section order, split/combine sections
+- Write from knowledge, not by paraphrasing
+- Add technical depth where the source is thin
+- Maintain factual accuracy (ballistic data, physics, dimensions)
+- Tone: authoritative instructor speaking to serious carriers
+
+## When Generating .docx Files
+
+- Use the `docx` npm package (already installed)
+- Follow the formatting spec in RULES.md exactly
+- Validate output: the file should open cleanly in Word and Google Docs
+- Use `generate.js` as your template — it has all paragraph builders pre-configured
+
+## File Naming
+
+- Source chapters: `source-text/chapter_01.md`, `chapter_02.md`, etc.
+- Rewritten chapters: `chapters/chapter_01.md`, `chapters/chapter_02.md`, etc.
+- Output docs: `output/KnowYourAmmo_Part1.docx`, `Part2.docx`, etc.

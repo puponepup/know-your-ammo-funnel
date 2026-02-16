@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Downsell — Her Shield (Discounted)</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a1a2e;
+    --yellow: #FFF000;
+    --red: #cc0000;
+    --dark: #333333;
+    --alice-blue: #F5FCFF;
+    --jagged-ice: #D6E7EF;
+    --onahau: #D0F1FE;
+    --bridesmaid: #FEF0EF;
+    --pirate-gold: #B8860B;
+    --green: #28a745;
+    --green-dark: #1e7e34;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#fff; font-family: 'Lora', Georgia, serif; color:var(--dark); -webkit-font-smoothing:antialiased; }
+
+  .header { background:var(--navy); text-align:center; padding:22px 20px 110px; }
+  .header-inner { max-width:970px; margin:0 auto; }
+  .header .congrats { font-size:60px; font-weight:700; color:var(--yellow); line-height:1; margin-bottom:8px; }
+  .header .selected { display:inline-block; font-size:22px; font-weight:700; color:#fff; border-bottom:2px solid #fff; padding-bottom:4px; margin-bottom:12px; }
+  .header .discount-approved { font-size:42px; font-weight:700; color:#fff; line-height:1.2; }
+
+  .card-wrap { max-width:970px; margin:-60px auto 0; padding:0 20px; position:relative; z-index:2; }
+  .card { background:var(--alice-blue); border:1px solid var(--jagged-ice); border-radius:6px; overflow:hidden; }
+  .card-inner { display:flex; min-height:420px; }
+
+  .card-left { flex:0 0 45%; background:var(--onahau); display:flex; align-items:center; justify-content:center; padding:40px 20px; }
+  .card-left .img-placeholder { width:100%; max-width:380px; min-height:240px; background:#c8e6f8; border:2px dashed #89b9d4; border-radius:8px; display:flex; align-items:center; justify-content:center; text-align:center; padding:20px; color:#5a8ba8; font:italic 13px/1.5 Arial, sans-serif; }
+
+  .card-right { flex:1; padding:24px 28px; display:flex; flex-direction:column; justify-content:center; }
+  .card-right .pitch { font-size:20px; line-height:1.5; text-align:center; margin-bottom:6px; }
+  .card-right .pitch .product-name { font-weight:700; color:var(--red); font-size:24px; display:block; }
+
+  .price-cascade { display:flex; justify-content:center; align-items:center; gap:6px; margin:16px 0 8px; flex-wrap:wrap; }
+  .price-cascade .label { font-size:20px; color:var(--dark); }
+  .price-cascade .struck { font-size:20px; color:var(--dark); position:relative; padding:0 5px; }
+  .price-cascade .struck::after { content:''; position:absolute; left:0; right:0; top:50%; height:2px; background:var(--red); }
+
+  .final-price { text-align:center; margin:10px 0; }
+  .final-price .only { font-size:32px; font-weight:700; color:#000; }
+  .final-price .amount { font-size:42px; font-weight:700; color:var(--green); }
+
+  .scarcity { text-align:center; font-size:18px; line-height:1.5; margin-top:8px; }
+  .scarcity .count { font-weight:700; color:var(--pirate-gold); }
+  .scarcity .discount-text { font-weight:700; }
+
+  .below-card { max-width:970px; margin:0 auto; padding:20px 20px 40px; text-align:center; }
+  .urgency-warning { background:var(--bridesmaid); border-radius:4px; padding:10px 16px; font-size:16px; font-weight:400; color:#000; margin-bottom:16px; text-transform:uppercase; letter-spacing:.5px; }
+  .guarantee-text { font-size:18px; margin-bottom:20px; color:#000; }
+
+  .cta-btn { display:block; max-width:600px; margin:0 auto 16px; padding:20px 24px; background:linear-gradient(180deg, var(--green) 0%, var(--green-dark) 100%); border:none; border-radius:8px; color:#fff; font:bold 20px/1.3 Arial, sans-serif; text-align:center; text-transform:uppercase; cursor:pointer; box-shadow:0 4px 16px rgba(40,167,69,.3); text-decoration:none; animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.02); } }
+  .cta-btn:hover { opacity:.92; }
+
+  .decline-link { display:flex; align-items:flex-start; justify-content:center; gap:6px; max-width:600px; margin:20px auto 0; font-size:14px; color:var(--dark); text-decoration:underline; cursor:pointer; line-height:1.5; text-align:center; }
+  .decline-link img { width:16px; height:16px; margin-top:2px; flex-shrink:0; }
+
+  .footer { border-top:1px solid #ccc; padding:24px 20px; text-align:center; max-width:970px; margin:0 auto; }
+  .footer-links { display:flex; justify-content:center; gap:8px; margin-bottom:10px; font-size:14px; }
+  .footer-links a { color:var(--dark); text-decoration:underline; }
+  .footer-links .sep { color:#999; }
+  .footer-copy { font-size:13px; color:var(--dark); margin-bottom:10px; }
+  .footer-disclaimer { font-size:11px; color:#666; line-height:1.5; max-width:700px; margin:0 auto; }
+
+  @media(max-width:700px) {
+    .header .congrats { font-size:36px; }
+    .header .selected { font-size:16px; }
+    .header .discount-approved { font-size:26px; }
+    .card-inner { flex-direction:column; }
+    .card-left { padding:24px 16px; }
+    .card-right { padding:20px 16px; }
+    .card-right .pitch { font-size:17px; }
+    .card-right .pitch .product-name { font-size:20px; }
+    .final-price .only { font-size:26px; }
+    .final-price .amount { font-size:34px; }
+    .cta-btn { font-size:16px; padding:16px 20px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-inner">
+      <div class="congrats">Congratulations!</div>
+      <div class="selected">You've Been Selected</div>
+      <div class="discount-approved">Your $12 Discount Is Approved</div>
+    </div>
+  </div>
+
+  <!-- MAIN PRODUCT CARD -->
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-inner">
+
+        <div class="card-left">
+          <img src="assets/hershield-mockup.png" alt="Her Shield Product Mockup" style="width:100%; max-width:380px; height:auto; display:block; margin:0 auto;">
+        </div>
+
+        <div class="card-right">
+          <p class="pitch">
+            You said "not right now" — and we respect that.<br>
+            But before you go, you've been selected to claim the complete
+            <span class="product-name">Her Shield</span>
+            training for the woman in your life — at a price we've never offered before.
+          </p>
+
+          <div class="price-cascade">
+            <span class="label">Regular Price:</span>
+            <span class="struck">$197</span>
+            <span class="struck">$97</span>
+            <span class="struck">$37</span>
+          </div>
+
+          <div class="final-price">
+            <span class="only">Only </span>
+            <span class="amount">$25</span>
+          </div>
+
+          <p class="scarcity">
+            Only <span class="count">3</span> Packages Left<br>
+            That Qualify For This Special <span class="discount-text">$12 Discount.</span>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- BELOW CARD -->
+  <div class="below-card">
+    <div class="urgency-warning">Close this page and the deal is gone forever</div>
+    <p class="guarantee-text">60-day 100% Money Back Guarantee</p>
+    <a class="cta-btn" href="#">YES! GIVE HER THE PROTECTION SHE DESERVES FOR JUST $25 — I WON'T SEE THIS PRICE AGAIN</a>
+    <div class="decline-link">
+      <img src="cross-icon.png" alt="X">
+      <span>No thanks. I will not try out Her Shield at this special discount. I reject my savings. I give up the massive discount that is only available to me on this page.</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a><span class="sep">|</span>
+      <a href="#">Terms & Conditions</a><span class="sep">|</span>
+      <a href="#">Contact Us</a>
+    </div>
+    <p class="footer-copy">Copyright © 2026 Certified Concealed. All Rights Reserved.</p>
+    <p class="footer-disclaimer">Disclaimer: This product is for educational purposes only and does not constitute legal advice. The training provided is designed to supplement — not replace — professional firearms training, legal counsel, or self-defense certifications. Always follow local, state, and federal laws regarding concealed carry and firearms use. Individual results may vary.</p>
+  </div>
+
+</body>
+</html>
