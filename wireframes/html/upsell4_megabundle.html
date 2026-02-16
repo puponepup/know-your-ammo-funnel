@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIREFRAME — Upsell 4: MEGA BUNDLE ($47) — Sales Page (NO VIDEO) — Final Offer</title>
+<style>
+  :root {
+    --navy: #1a1a2e;
+    --red: #cc0000;
+    --red-dark: #a30000;
+    --green: #28a745;
+    --green-dark: #1e7e34;
+    --cream: #f5f0e0;
+    --light-cream: #f8f7f5;
+    --white: #ffffff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#e8e8e8; font-family: Georgia, 'Times New Roman', serif; color:var(--navy); -webkit-font-smoothing:antialiased; }
+
+  .page { max-width:960px; margin:0 auto; background:var(--white); box-shadow:0 0 30px rgba(0,0,0,.1); }
+  .inner { max-width:760px; margin:0 auto; padding:0 20px; }
+  .inner-narrow { max-width:600px; margin:0 auto; padding:0 20px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { display:flex; border-radius:4px; overflow:hidden; margin:10px 20px; border:1px solid #ccc; }
+  .step { flex:1; text-align:center; font:bold 13px Arial, sans-serif; text-transform:uppercase; letter-spacing:.3px; color:#888; background:#f8f8f8; border-right:1px solid #ccc; padding:14px 10px; line-height:1.4; }
+  .step:last-child { border-right:none; }
+  .step.active { background:#4CAF50; color:#fff; }
+
+  .order-status { text-align:center; padding:18px 20px 14px; background:var(--white); }
+  .order-status h3 { font-size:21px; margin-bottom:4px; font-family:Arial,sans-serif; }
+  .order-status .dc { font-size:13px; color:var(--red); font-style:italic; font-family:Arial,sans-serif; }
+
+  section { padding:36px 0; }
+  section.tight { padding:24px 0; }
+  section.cream { background:var(--light-cream); }
+  section.navy { background:var(--navy); }
+  section.navy, section.navy * { color:var(--cream); }
+  section.navy h2, section.navy h3 { color:#fff; }
+  section.gradient { background:linear-gradient(180deg, var(--navy) 0%, #0a0a15 100%); }
+  section.gradient, section.gradient * { color:var(--cream); }
+  section.gradient h2 { color:#fff; }
+
+  .pre-head { font:bold 14px/1.4 Arial, sans-serif; text-transform:uppercase; color:var(--red); letter-spacing:3px; text-align:center; margin-bottom:14px; }
+  h1 { font-size:32px; line-height:1.25; font-weight:bold; text-align:center; margin-bottom:16px; }
+  h2 { font-size:26px; line-height:1.3; font-weight:bold; text-align:center; margin-bottom:18px; }
+  h3 { font-size:20px; font-weight:bold; margin-bottom:10px; }
+  p { font-size:17px; line-height:1.7; margin-bottom:12px; }
+  .subhead { font-size:19px; line-height:1.6; text-align:center; margin-bottom:20px; }
+  .bold-highlight { font-weight:bold; color:var(--red); }
+
+  .img-placeholder { background:#e8e4db; border:2px dashed #aaa; border-radius:8px; display:flex; align-items:center; justify-content:center; text-align:center; padding:20px 16px; margin:16px auto; color:#777; font:italic 13px/1.5 Arial, sans-serif; position:relative; }
+  .img-placeholder .prompt-num { position:absolute; top:6px; left:10px; background:var(--navy); color:#fff; font:bold 10px/20px Arial; padding:0 7px; border-radius:3px; }
+
+  .cta-wrap { max-width:560px; margin:0 auto; padding:10px 20px; }
+  .cta-btn { display:block; width:100%; padding:18px 20px; background:linear-gradient(180deg, var(--green) 0%, var(--green-dark) 100%); border:none; border-radius:8px; color:#fff; font:bold 18px/1.3 Arial, sans-serif; text-align:center; text-transform:uppercase; cursor:pointer; box-shadow:0 4px 16px rgba(40,167,69,.3); text-decoration:none; animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{box-shadow:0 4px 16px rgba(40,167,69,.3)} 50%{box-shadow:0 4px 28px rgba(40,167,69,.55)} }
+  .cta-sub { text-align:center; margin-top:10px; }
+  .cta-sub img { max-width:380px; width:100%; height:auto; }
+  .shame { display:block; text-align:center; font:italic 15px/1.5 Georgia; color:#666; margin-top:14px; text-decoration:underline; cursor:pointer; }
+  .shame.light { color:rgba(245,240,224,.8); }
+  .shame strong { font-weight:bold; }
+
+  .price-block { text-align:center; margin:16px auto; }
+  .price-old { font:18px/1.4 Arial; text-decoration:line-through; color:#888; }
+  .price-new { font:bold 44px/1.2 Arial; color:var(--green); margin:6px 0; }
+  .price-note { font:15px/1.4 Arial; color:var(--navy); }
+  .savings-red { font:bold 22px/1.4 Arial; color:var(--red); margin:8px 0; }
+
+  /* OFFER STACK TABLE — Enhanced Design */
+  .offer-stack { 
+    background:#fff; 
+    border:3px solid var(--navy); 
+    border-radius:4px; 
+    overflow:hidden; 
+    margin:20px auto; 
+    max-width:540px;
+    box-shadow:0 8px 24px rgba(0,0,0,.12), 0 2px 8px rgba(0,0,0,.08);
+    position:relative;
+  }
+  .offer-stack::before {
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:4px;
+    background:linear-gradient(90deg, var(--red) 0%, var(--navy) 100%);
+  }
+  .stack-item { 
+    display:flex; 
+    justify-content:space-between; 
+    padding:18px 24px; 
+    border-bottom:1px solid #e8e8e8; 
+    font:17px/1.4 Georgia; 
+    transition:background 0.2s ease;
+  }
+  .stack-item:hover {
+    background:#fafafa;
+  }
+  .stack-item .stack-name {
+    font-weight:500;
+  }
+  .stack-item .stack-price { 
+    font:bold 17px Arial; 
+    color:#999; 
+    white-space:nowrap;
+    margin-left:12px;
+  }
+  .stack-item .stack-price s { 
+    color:var(--red); 
+    text-decoration-thickness:2px;
+  }
+  .stack-total { 
+    display:flex; 
+    justify-content:space-between; 
+    padding:18px 24px; 
+    border-top:2px solid var(--navy);
+    border-bottom:3px solid var(--navy); 
+    font:bold 19px/1.4 Arial; 
+    background:linear-gradient(180deg, #f8f7f5 0%, #f0ede8 100%);
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+  .stack-total s { 
+    color:var(--red); 
+    font-size:22px;
+    text-decoration-thickness:2px;
+  }
+  .stack-you-pay { 
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center; 
+    padding:22px 24px; 
+    background:linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+    color:#fff; 
+    font:bold 20px/1.4 Arial;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    box-shadow:inset 0 -2px 0 rgba(0,0,0,.15);
+  }
+  .stack-you-pay .big-price { 
+    font-size:38px; 
+    text-shadow:0 2px 4px rgba(0,0,0,.2);
+    letter-spacing:-1px;
+  }
+
+  .scenario-card { background:#fff; border-radius:10px; box-shadow:0 2px 12px rgba(0,0,0,.07); margin-bottom:24px; overflow:hidden; }
+  .scenario-card .img-placeholder { border-radius:0; margin:0; min-height:140px; }
+  .scenario-card .card-body { padding:20px 24px; }
+  .scenario-card h3 { color:var(--navy); font-size:20px; }
+  .scenario-card .product-bullets { list-style:none; padding:0; margin:12px 0 0; }
+  .scenario-card .product-bullets li { font-size:16px; line-height:1.55; padding:6px 0 6px 24px; position:relative; }
+  .scenario-card .product-bullets li::before { content:'✓'; position:absolute; left:0; font-weight:bold; color:var(--red); }
+
+  .guarantee-box { background:#fdfbf5; border:2px solid var(--navy); border-radius:12px; padding:28px 24px; text-align:center; max-width:600px; margin:0 auto; }
+  .guarantee-box img { width:120px; height:auto; margin-bottom:12px; }
+  .guarantee-box h2 { font-size:22px; margin-bottom:16px; }
+  .guarantee-box p { font-size:16px; margin-bottom:10px; text-align:left; }
+  .guarantee-box .guarantee-intro { font-weight:bold; color:var(--navy); }
+  .guarantee-box .guarantee-close { font-weight:bold; font-size:18px; margin-top:14px; text-align:center; }
+
+  footer { background:#111; padding:24px 20px; text-align:center; }
+  footer p { font:13px/1.6 Arial; color:#aaa; margin:0; }
+
+  /* EXIT POPUP */
+  .exit-overlay { display:none; position:fixed; top:0;left:0;right:0;bottom:0; background:rgba(0,0,0,.7); z-index:9998; align-items:center; justify-content:center; }
+  .exit-popup { background:#fff; border:4px solid #333; border-radius:10px; max-width:480px; width:90%; margin:auto; position:relative; overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,.5); }
+  .exit-popup .close-x { position:absolute; top:10px; right:14px; font:bold 22px/1 Arial; color:#999; cursor:pointer; z-index:2; }
+  .exit-popup .ep-header { background:#000; padding:14px 20px; display:flex; align-items:center; gap:14px; }
+  .exit-popup .ep-wait { background:var(--red); color:#fff; font:bold 22px/1.2 Arial; padding:8px 14px; display:inline-block; }
+  .exit-popup .ep-title { color:#fff; font:bold 16px/1.3 Georgia; }
+  .exit-popup .ep-body { padding:20px 24px; }
+  .exit-popup .ep-body .ep-row { display:flex; gap:14px; margin-bottom:14px; align-items:flex-start; }
+  .exit-popup .ep-body .ep-img { width:80px; height:64px; background:#e8e4db; border:1px dashed #aaa; border-radius:6px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font:italic 10px Arial; color:#888; text-align:center; }
+  .exit-popup .ep-body h4 { font:bold 14px/1.4 Georgia; margin-bottom:4px; color:var(--navy); }
+  .exit-popup .ep-bullets { list-style:none; padding:0; font-size:14px; }
+  .exit-popup .ep-bullets li { padding:2px 0 2px 20px; position:relative; }
+  .exit-popup .ep-bullets li::before { content:'✓'; position:absolute; left:0; color:var(--red); font-weight:bold; }
+  .exit-popup .ep-cta { display:block; width:100%; padding:16px; background:var(--green); border:none; border-radius:6px; color:#fff; font:bold 16px/1.3 Arial; text-align:center; cursor:pointer; margin-bottom:10px; text-transform:uppercase; }
+
+  @media(max-width:700px) {
+    h1 { font-size:18px !important; line-height:1.2 !important; margin-bottom:6px; }
+    h2 { font-size:22px; }
+    h3 { font-size:18px; }
+    p { font-size:16px; }
+    .subhead { font-size:16px; line-height:1.5; margin-bottom:12px; }
+    section { padding:28px 0; }
+    section.tight { padding:16px 0; }
+    .cta-btn { font-size:16px; padding:16px; }
+    .price-new { font-size:36px; }
+    .savings-red { font-size:18px; }
+    .scenario-card .img-placeholder { min-height:100px; }
+    /* Mobile hero — minimal */
+    .pre-head { display:none; }
+    .order-status { padding:8px 16px 6px; }
+    .order-status h3 { font-size:14px; margin-bottom:0; }
+    .order-status .dc { display:none; }
+    .hero-subhead-mobile-hide { display:none; }
+    /* Guarantee badge centered on mobile */
+    .guarantee-badge-wrap { width:100%; }
+    /* Mobile progress bar */
+    .progress-bar { margin:6px 8px; border-radius:3px; }
+    .step { font-size:10px; padding:8px 4px; letter-spacing:0; line-height:1.4; }
+    .exit-popup .ep-body .ep-row { flex-direction:column; }
+    .exit-popup .ep-body .ep-img { width:100%; height:60px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- PROGRESS BAR: Step 2 active -->
+  <div class="progress-bar">
+    <div class="step">Step 1: Complete Your Order</div>
+    <div class="step active">Step 2: Customize Order</div>
+    <div class="step">Step 3: Order Complete</div>
+  </div>
+
+  <div class="order-status">
+    <h3 style="color:var(--red); font-size:24px;">⚠️ WAIT — Before You Go...</h3>
+    <p class="dc"><strong>We don't want you to leave unprepared. This is a one-time offer you won't see again.</strong></p>
+  </div>
+
+  <!-- HERO: Vault reference layout -->
+  <section class="tight">
+    <div class="inner" style="text-align:center;">
+      <p style="font:italic 20px/1.5 Georgia; margin-bottom:12px;"><span style="background:#fff700; padding:2px 8px;">Because you're one of us, you've been selected for...</span></p>
+      <h1 style="font-size:40px; line-height:1.2; margin-bottom:20px;">The Last-Chance Complete Training Bundle — All 3 Courses For Less Than the Price of One</h1>
+      <img src="assets/bundle-mockup.png" alt="Complete Training Bundle - All 3 Courses" style="width:100%; max-width:700px; height:auto; display:block; margin:20px auto; border-radius:8px;">
+      <p class="subhead hero-subhead-mobile-hide">Look — you said no to the individual courses, and we respect that. But we can't in good conscience let you walk away without at least offering you <strong>everything we have</strong> at a price that makes saying no almost impossible. This is the only time we'll bundle all 3 courses together at this price.</p>
+    </div>
+  </section>
+
+  <!-- ANALOGY SECTION -->
+  <section class="cream tight">
+    <div class="inner">
+      <h2>Here's Why We're Doing This</h2>
+      <p>We've been training concealed carriers for over 30 years.</p>
+      
+      <p>And the one thing we've learned is this: <strong>partial preparation is almost as dangerous as no preparation at all.</strong></p>
+      
+      <p>A carrier who can shoot but can't handle a real-world scenario is a liability.</p>
+      
+      <p>A carrier who can respond to a threat but can't stop the bleeding afterwards has only done half the job.</p>
+      
+      <p>A carrier who's trained but whose wife is completely unprotected has a blind spot that keeps him up at night.</p>
+      
+      <p style="margin-top:20px;">That's why we built three courses — not one.</p>
+      
+      <p><strong>UNTHINKABLE</strong> covers the 10 scenarios your permit class never mentioned.</p>
+      
+      <p><strong>First Aid Training Vault</strong> teaches you to save a life when seconds count.</p>
+      
+      <p><strong>Her Shield</strong> gives the woman in your life the same tactical confidence you carry every day.</p>
+      
+      <p><strong>Together, they close every gap.</strong></p>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">YES! I WANT THE COMPLETE TRAINING SYSTEM — $47</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET: detailed breakdown with bullets -->
+  <section class="tight">
+    <div class="inner">
+      <h2>Here's What You Get — Every Piece, Broken Down</h2>
+
+      <div class="scenario-card">
+        <img src="assets/unthinkable-mockup.png" alt="UNTHINKABLE Course Mockup" style="width:100%; height:auto; display:block; border-radius:10px 10px 0 0;">
+        <div class="card-body">
+          <h3>UNTHINKABLE — 10 Real-World Scenarios ($97 value)</h3>
+          <p>The defensive situations your permit class never covered. Step-by-step tactical response for each.</p>
+          <ul class="product-bullets">
+            <li>10 HD video scenarios: road rage, active robbery, child finds gun, sleepover crisis, and more</li>
+            <li>Legal decision trees so you know exactly when you can — and cannot — act</li>
+            <li>Emotional control drills to keep you calm when every second counts</li>
+            <li>Instant access on any device — phone, tablet, laptop — lifetime access</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="scenario-card">
+        <img src="assets/firstaid-mockup.png" alt="First Aid Training Vault Course Mockup" style="width:100%; height:auto; display:block; border-radius:10px 10px 0 0;">
+        <div class="card-body">
+          <h3>Firearm First Aid Training Vault ($97 value)</h3>
+          <p>When bullets fly, you have 3 minutes before someone bleeds out. This training could mean the difference between life and death.</p>
+          <ul class="product-bullets">
+            <li>Stop-the-bleed protocols: tourniquets, pressure, packing wounds — done right</li>
+            <li>Critical first-response techniques for gunshot wounds and traumatic injury</li>
+            <li>What to do — and what NOT to do — while waiting for EMS</li>
+            <li>Printable checklists and quick-reference guides for your range bag or vehicle</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="scenario-card">
+        <img src="assets/hershield-mockup.png" alt="Her Shield Course Mockup" style="width:100%; height:auto; display:block; border-radius:10px 10px 0 0;">
+        <div class="card-body">
+          <h3>Her Shield — Concealed Carry for Women ($37 value)</h3>
+          <p>You can't be with her every second. Give her the same confidence you carry every day.</p>
+          <ul class="product-bullets">
+            <li>Firearm selection and fit for women — what works and why</li>
+            <li>Concealment options: holsters, carry positions, wardrobe that works</li>
+            <li>Carrying around kids: safety, access, mindset when they're in the car</li>
+            <li>Situational awareness and decision-making under pressure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">YES! GIVE ME EVERYTHING — ALL 3 COURSES ($47)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- VALUE BUILD: logical, mathematical -->
+  <section class="cream tight">
+    <div class="inner">
+      <h2>The Math Is Simple</h2>
+      <p>UNTHINKABLE alone costs $97.</p>
+      
+      <p>The First Aid Training Vault costs $97.</p>
+      
+      <p>Her Shield costs $37.</p>
+      
+      <p>That's <strong>$231</strong> if you were to buy them separately.</p>
+      
+      <p style="margin-top:20px;">But right now, because you're here on this page, at this exact moment, you can get all three for a one-time payment of just <strong style="color:var(--green);">$47</strong>.</p>
+      
+      <p>That's 80% off.</p>
+      
+      <p>That's less than what you'd pay for a box of quality self-defense ammunition.</p>
+      <div class="offer-stack">
+        <div class="stack-item"><span class="stack-name">UNTHINKABLE: 10 Scenarios Video Course</span><span class="stack-price"><s>$97</s></span></div>
+        <div class="stack-item"><span class="stack-name">Firearm First Aid Training Vault</span><span class="stack-price"><s>$97</s></span></div>
+        <div class="stack-item"><span class="stack-name">Her Shield: Women's Concealed Carry</span><span class="stack-price"><s>$37</s></span></div>
+        <div class="stack-total"><span>TOTAL VALUE</span><span><s>$231</s></span></div>
+        <div class="stack-you-pay"><span>YOU PAY TODAY</span><span class="big-price">$47</span></div>
+      </div>
+      <div class="price-block">
+        <div class="savings-red">You Save $184 — 80% OFF</div>
+        <div class="price-note">One-Time | Instant Access | 60-Day Guarantee</div>
+      </div>
+      <div class="cta-wrap">
+        <a class="cta-btn" href="#">YES! GIVE ME ALL 3 COURSES FOR JUST $47</a>
+        <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RISK REVERSAL + REGRET -->
+  <section class="navy">
+    <div class="inner">
+      <img src="assets/man-alone-2am.png" alt="Man alone at 2AM thinking about regret" style="width:100%; max-width:1000px; height:auto; display:block; margin:0 auto; border-radius:8px;">
+      <h2>And to Make Sure There's Absolutely No Reason for You Not to Take Advantage of This...</h2>
+      <p style="font-size:18px; text-align:center; max-width:580px; margin:0 auto 14px;">The training you didn't take. The scenarios you never practiced. The first aid you never learned. The protection she never got. For $47 — less than dinner for two — you close EVERY gap.</p>
+      <p style="font-size:20px; font-weight:bold; text-align:center; color:#fff; margin:16px auto;">Or you leave and hope. But hope is not a strategy.</p>
+      <p style="font-size:18px; font-weight:bold; text-align:center; color:var(--red); margin-bottom:0;">"I should have" are the three worst words in the English language.</p>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">I DON'T WANT TO REGRET THIS — ADD ALL 3 ($47)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods" style="filter:brightness(2);"></div>
+    </div>
+  </section>
+
+  <!-- TWO PATHS — DECISION SECTION -->
+  <section class="tight">
+    <div class="inner" style="max-width:800px;">
+      <img src="two-paths.png" alt="Choose Your Path" style="width:100%; border-radius:8px; margin-bottom:28px;">
+      <h2 style="font-size:28px; margin-bottom:20px;">Right Now, You're Standing at a Fork in the Road.</h2>
+
+      <p style="font-size:18px; line-height:1.7;">One path leads forward. The other leads to regret.</p>
+
+      <p style="font-size:18px; line-height:1.7;"><strong>Path One:</strong> You close this page. You tell yourself you don't need this.</p>
+      
+      <p style="font-size:18px; line-height:1.7;">You go back to carrying your firearm every day with the same gaps in your training, the same blind spots, the same quiet uncertainty in the back of your mind.</p>
+      
+      <p style="font-size:18px; line-height:1.7;">Months from now, something happens — a medical emergency you weren't ready for, a situation that spirals before you can think straight, a moment when the woman in your life needed skills she never had.</p>
+      
+      <p style="font-size:18px; line-height:1.7;">And in that moment, you'll remember this page. You'll remember the price. <strong>And you'll wish you'd made a different choice.</strong></p>
+
+      <p style="font-size:18px; line-height:1.7; margin-top:28px;"><strong>Path Two:</strong> You invest $47 today — less than a box of premium carry ammo.</p>
+      
+      <p style="font-size:18px; line-height:1.7;">You walk away with <em>every single piece of training</em> we've ever built.</p>
+      
+      <p style="font-size:18px; line-height:1.7;">The real-world scenario preparation. The lifesaving medical skills. The women's protection course for the person you love most.</p>
+      
+      <p style="font-size:18px; line-height:1.7;">Skills that don't expire. Skills that travel with you. Skills that could make you the person your family, your neighbors, and your community turn to when everything goes sideways.</p>
+
+      <p style="font-size:18px; line-height:1.7;">Now — I know what you might be thinking.</p>
+      
+      <p style="font-size:18px; line-height:1.7;"><em>"I'm already prepared. I've got this handled."</em></p>
+
+      <p style="font-size:18px; line-height:1.7;">I've been in this world for over 30 years.</p>
+      
+      <p style="font-size:18px; line-height:1.7;">And if there's one thing I've heard more than anything else, it's that exact sentence — from the exact people who froze when it mattered.</p>
+      
+      <p style="font-size:18px; line-height:1.7;">The ones who couldn't stop the bleeding. The ones who drew too early or too late. The ones whose wives called them crying from a parking lot and had no idea what to tell them.</p>
+
+      <p style="font-size:18px; line-height:1.7;"><strong>Confidence without preparation isn't confidence. It's a liability.</strong></p>
+
+      <p style="font-size:18px; line-height:1.7;">Choosing to pass on this isn't just leaving $184 in savings on the table.</p>
+      
+      <p style="font-size:18px; line-height:1.7;">It's choosing to stay unprepared.</p>
+      
+      <p style="font-size:18px; line-height:1.7;">It's choosing to hope nothing happens instead of <em>knowing</em> what to do when it does.</p>
+      
+      <p style="font-size:18px; line-height:1.7;">And the consequences of that choice? They're not hypothetical. They're happening to someone right now, as you read this.</p>
+
+      <p style="font-size:18px; line-height:1.7; text-align:center;"><strong style="font-size:20px;">So let me give you the same advice I'd give my own son:</strong></p>
+
+      <p style="font-size:19px; line-height:1.7; text-align:center; color:var(--red);"><strong>Spend the $47.</strong></p>
+      
+      <p style="font-size:19px; line-height:1.7; text-align:center; color:var(--red);"><strong>Do it for yourself. Do it for her.</strong></p>
+      
+      <p style="font-size:19px; line-height:1.7; text-align:center; color:var(--red);"><strong>Do it for the people counting on you — even if they don't know it yet.</strong></p>
+      
+      <p style="font-size:19px; line-height:1.7; text-align:center; color:var(--red);"><strong>Because you will never regret being the most prepared person in the room.</strong></p>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">I CHOOSE TO BE PREPARED — GIVE ME ALL 3 FOR $47</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- EXPANDED GUARANTEE -->
+  <section class="cream tight">
+    <div class="inner">
+      <div class="guarantee-box" style="text-align:left; max-width:700px;">
+        <h2 style="text-align:center; font-size:26px; color:var(--red); margin-bottom:4px;">👉 The Best Money-Back Guarantee In The Industry 👈</h2>
+        <h3 style="text-align:center; font-size:20px; margin-bottom:16px;">Try All 3 Courses For A Full 60 Days — Zero Risk!</h3>
+        <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+          <div style="flex:1; min-width:260px;">
+            <p>See, I don't want you feeling like you're taking any kind of "risk" on this. I want you to be <strong>fully confident</strong> this is exactly what you and your family need.</p>
+            <p>So I'd like to give you a full 60 days to go through all 3 courses. Meaning you don't even have to say "Yes" today — just say "Maybe" — and <strong>try everything completely risk-free for a full 60 days.</strong></p>
+          </div>
+          <div class="guarantee-badge-wrap" style="flex-shrink:0; text-align:center;"><img src="guarantee-badge.png" alt="60-Day Money Back Guarantee" style="width:160px;"></div>
+        </div>
+        <div style="background:var(--red); color:#fff; text-align:center; padding:10px 16px; border-radius:4px; margin:16px 0 12px; font:bold 20px/1.4 Arial;">It Works — Or It's FREE 🙌</div>
+        <p>I realize you might be thinking "this sounds too good to be true." Three full courses for $47?</p>
+        <p>So I don't blame you if you're skeptical... But I am happy to tell you...</p>
+        <p><strong style="font-size:19px;">There is absolutely NO catch, NO obligation, and NO risk to you whatsoever.</strong></p>
+        <p><u>Go through every single module across all 3 courses for 60 days — absolutely Risk-free.</u> Watch every video. Test every technique.</p>
+        <p>If you find for any reason (or no reason at all) that this doesn't work exactly as I've described, send us an email,</p>
+        <p>And we will personally see to it that you are refunded every single penny — <strong style="text-decoration:underline; font-size:19px;">NO QUESTIONS ASKED!</strong></p>
+        <p><strong>Plus — you keep everything as our way of saying thanks for giving it a shot.</strong></p>
+      </div>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">I'M COVERED BY THE 60-DAY GUARANTEE — YES, ALL 3 FOR $47</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="gradient" style="padding:40px 0;">
+    <div class="inner" style="text-align:center;">
+      <img src="assets/bundle-mockup.png" alt="Complete Bundle - Last Chance" style="width:100%; max-width:520px; height:auto; display:block; margin:0 auto 20px; border-radius:8px;">
+      <h2 style="font-size:26px;">This Page Disappears When You Leave. The Price Goes to $231. This Is It.</h2>
+      <div class="price-block">
+        <span style="text-decoration:line-through; color:#aaa; font-size:20px;">$231</span>
+        <span style="color:var(--cream); font-size:20px;"> → </span>
+        <span class="price-new">$47</span>
+      </div>
+      <p style="font-size:16px; color:var(--cream); margin-bottom:16px;">All 3 Courses | Instant Access | 60-Day Guarantee</p>
+      <div class="cta-wrap">
+        <a class="cta-btn" href="#">THIS IS MY LAST CHANCE — GET EVERYTHING FOR $47 BEFORE IT'S GONE</a>
+        <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods" style="filter:brightness(2);"></div>
+        <a class="shame light" href="#">No, I'll leave all three courses and $184 in savings on the table.</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Certified Concealed. All Rights Reserved.<br>Educational purposes only. Not legal advice.<br>Privacy Policy | Terms | Contact</p>
+  </footer>
+
+</div>
+
+<!-- EXIT POPUP — cooldown-based, no exitShown flag -->
+<div class="exit-overlay" id="exitPopup">
+  <div class="exit-popup">
+    <span class="close-x" id="exitClose">✕</span>
+    <div class="ep-header">
+      <span class="ep-wait">WAIT!</span>
+      <span class="ep-title">Before You Go... Your $184 Savings Disappears Forever</span>
+    </div>
+    <div class="ep-body">
+      <div class="ep-row">
+        <img src="assets/bundle-mockup.png" alt="Complete Bundle" style="width:100%; height:auto; margin-bottom:16px; border-radius:6px;">
+      </div>
+      <div class="ep-row">
+        <div class="ep-img">Details</div>
+        <div>
+          <h4>ALL 3 COURSES INCLUDED:</h4>
+          <ul class="ep-bullets">
+            <li>UNTHINKABLE ($97): 10 scenarios + legal trees</li>
+            <li>First Aid Vault ($97): Stop-the-bleed protocols</li>
+            <li>Her Shield ($37): Women's carry training</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font:bold 16px/1.4 Arial; color:var(--red); text-align:center;">ALL 3 FOR $47 — You Save $184 (80% OFF)</p>
+      <button class="ep-cta" id="exitAccept">YES! GIVE ME EVERYTHING — $47</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Exit popup — cooldown-based (3s), id-based listeners
+(function(){
+  var popup = document.getElementById('exitPopup');
+  var cooldown = false;
+  function hidePopup(){
+    popup.style.display = 'none';
+    cooldown = true;
+    setTimeout(function(){ cooldown = false; }, 3000);
+  }
+  document.getElementById('exitClose').addEventListener('click', hidePopup);
+  document.getElementById('exitAccept').addEventListener('click', hidePopup);
+  document.addEventListener('mouseout', function(e){
+    if (!cooldown && e.clientY < 5 && popup.style.display !== 'flex') {
+      popup.style.display = 'flex';
+    }
+  });
+})();
+</script>
+</body>
+</html>

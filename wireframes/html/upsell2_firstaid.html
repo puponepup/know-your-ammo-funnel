@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIREFRAME — Upsell 2: First Aid Training Vault ($67)</title>
+<style>
+  :root {
+    --navy: #1a1a2e;
+    --red: #cc0000;
+    --red-dark: #a30000;
+    --green: #28a745;
+    --green-dark: #1e7e34;
+    --cream: #f5f0e0;
+    --light-cream: #f8f7f5;
+    --white: #ffffff;
+    --star: #f5c518;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#e8e8e8; font-family: Georgia, 'Times New Roman', serif; color:var(--navy); -webkit-font-smoothing:antialiased; }
+
+  /* PAGE WRAPPER — wider, more flush with edges */
+  .page { max-width:960px; margin:0 auto; background:var(--white); box-shadow:0 0 30px rgba(0,0,0,.1); }
+
+  /* INNER CONTAINERS */
+  .inner { max-width:760px; margin:0 auto; padding:0 20px; }
+  .inner-narrow { max-width:600px; margin:0 auto; padding:0 20px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { display:flex; border-radius:4px; overflow:hidden; margin:10px 20px; border:1px solid #ccc; }
+  .step { flex:1; text-align:center; font:bold 13px Arial, sans-serif; text-transform:uppercase; letter-spacing:.3px; color:#888; background:#f8f8f8; border-right:1px solid #ccc; padding:14px 10px; line-height:1.4; }
+  .step:last-child { border-right:none; }
+  .step.active { background:#4CAF50; color:#fff; }
+
+  /* ORDER STATUS — Hero for Upsell 2 */
+  .order-status { text-align:center; padding:18px 20px 14px; background:var(--white); }
+  .order-status h3 { font-size:21px; color:var(--green); margin-bottom:6px; font-family:Arial,sans-serif; }
+  .order-status .sub-line { font-size:16px; color:var(--navy); margin-bottom:10px; }
+  .order-status .dc { font-size:13px; color:var(--red); font-style:italic; font-family:Arial,sans-serif; }
+
+  /* SECTIONS */
+  section { padding:48px 0; }
+  section.tight { padding:30px 0; }
+  section.cream { background:var(--light-cream); }
+  section.navy { background:var(--navy); }
+  section.navy, section.navy * { color:var(--cream); }
+  section.navy h2, section.navy h3 { color:#fff; }
+  section.gradient { background:linear-gradient(180deg, var(--navy) 0%, #0a0a15 100%); }
+  section.gradient, section.gradient * { color:var(--cream); }
+  section.gradient h2 { color:#fff; }
+
+  /* TYPOGRAPHY — 50+ optimized */
+  .pre-head { font:bold 14px/1.4 Arial, sans-serif; text-transform:uppercase; color:var(--red); letter-spacing:3px; text-align:center; margin-bottom:14px; }
+  h1 { font-size:36px; line-height:1.25; font-weight:bold; text-align:center; margin-bottom:18px; }
+  h2 { font-size:28px; line-height:1.3; font-weight:bold; text-align:center; margin-bottom:20px; }
+  h3 { font-size:22px; font-weight:bold; margin-bottom:10px; }
+  p { font-size:18px; line-height:1.75; margin-bottom:14px; }
+  .subhead { font-size:20px; line-height:1.65; text-align:center; margin-bottom:24px; }
+  .hero-subhead-mobile-show { display:none; }
+  .bold-highlight { font-weight:bold; color:var(--red); }
+
+  /* VIDEO PLACEHOLDER */
+  .video-placeholder { background:#111; border-radius:8px; max-width:100%; margin:20px auto; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; aspect-ratio:16/9; }
+  .video-placeholder .play { width:64px; height:64px; border-radius:50%; background:rgba(204,0,0,.85); display:flex; align-items:center; justify-content:center; }
+  .video-placeholder .play::after { content:''; border-left:20px solid #fff; border-top:12px solid transparent; border-bottom:12px solid transparent; margin-left:5px; }
+  .video-placeholder p { color:#888; font:13px/1.4 Arial; }
+  .video-note { text-align:center; font:bold 14px/1.4 Arial; color:var(--red); margin-bottom:10px; }
+
+  /* IMAGE PLACEHOLDER */
+  .img-placeholder { background:#e8e4db; border:2px dashed #aaa; border-radius:8px; display:flex; align-items:center; justify-content:center; text-align:center; padding:24px 16px; margin:20px auto; color:#777; font:italic 13px/1.5 Arial, sans-serif; position:relative; }
+  .img-placeholder .prompt-num { position:absolute; top:6px; left:10px; background:var(--navy); color:#fff; font:bold 10px/20px Arial; padding:0 7px; border-radius:3px; }
+
+  /* PRODUCT MOCKUP — stacked: headline above, big image, text below */
+  .mockup-section { text-align:center; }
+  .mockup-section .img-placeholder { max-width:700px; min-height:320px; }
+  .mockup-section .tag { font:bold 13px/1.4 Arial; text-transform:uppercase; color:var(--red); letter-spacing:2px; margin-bottom:10px; }
+  .mockup-section h2 { margin-top:16px; }
+
+  /* CTA BUTTON */
+  .cta-wrap { max-width:560px; margin:0 auto; padding:10px 20px; }
+  .cta-btn { display:block; width:100%; padding:18px 20px; background:linear-gradient(180deg, var(--green) 0%, var(--green-dark) 100%); border:none; border-radius:8px; color:#fff; font:bold 18px/1.3 Arial, sans-serif; text-align:center; text-transform:uppercase; cursor:pointer; box-shadow:0 4px 16px rgba(40,167,69,.3); text-decoration:none; animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{box-shadow:0 4px 16px rgba(40,167,69,.3)} 50%{box-shadow:0 4px 28px rgba(40,167,69,.55)} }
+  .cta-sub { text-align:center; margin-top:10px; }
+  .cta-sub img { max-width:380px; width:100%; height:auto; }
+  .shame { display:block; text-align:center; font:italic 15px/1.5 Georgia; color:#666; margin-top:18px; text-decoration:underline; cursor:pointer; }
+  .shame.light { color:rgba(245,240,224,.6); }
+  .shame strong { font-weight:bold; }
+
+  /* PRICE */
+  .price-block { text-align:center; margin:16px auto; }
+  .price-old { font:20px/1.4 Arial; text-decoration:line-through; color:#888; }
+  .price-new { font:bold 44px/1.2 Arial; color:var(--green); margin:6px 0; }
+  .price-note { font:15px/1.4 Arial; color:var(--navy); }
+
+  /* COUNTDOWN */
+  .countdown { display:flex; justify-content:center; gap:8px; margin:16px auto; align-items:center; }
+  .countdown .digit { background:var(--red); color:#fff; font:bold 28px/50px Arial; width:60px; text-align:center; border-radius:6px; }
+  .countdown .digit.ms { font-size:28px; width:60px; line-height:50px; background:var(--red); }
+  .countdown .sep { font:bold 28px/50px Arial; color:var(--red); }
+
+  /* TRUST BAR */
+  .trust-bar { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; margin:20px auto; }
+  .trust-item { text-align:center; font:bold 14px/1.4 Arial; color:var(--navy); }
+  .trust-item .icon { font-size:36px; display:block; margin-bottom:4px; }
+
+  /* FEATURE LIST */
+  .features { list-style:none; padding:0; margin:16px 0; }
+  .features li { font-size:18px; line-height:1.55; padding:5px 0 5px 30px; position:relative; }
+  .features li::before { content:'✅'; position:absolute; left:0; top:5px; }
+
+  /* BULLET LIST */
+  .bullets { list-style:none; padding:0; margin:14px 0; }
+  .bullets li { font:bold 18px/1.55 Georgia; padding:6px 0 6px 22px; position:relative; }
+  .bullets li::before { content:'•'; position:absolute; left:0; font-size:22px; color:var(--red); }
+
+  /* SCENARIO CARD */
+  .scenario-card { background:#fff; border-radius:10px; box-shadow:0 2px 12px rgba(0,0,0,.07); margin-bottom:32px; overflow:hidden; }
+  .scenario-card .img-placeholder { border-radius:0; margin:0; min-height:180px; }
+  .scenario-card .card-body { padding:20px 24px; }
+  .scenario-card h3 { color:var(--navy); font-size:21px; }
+  .fear-line { font:bold italic 17px/1.5 Georgia; color:var(--red); margin-top:10px; }
+
+  /* BONUS CARD */
+  .bonus-card { background:#fff; border-radius:10px; box-shadow:0 2px 12px rgba(0,0,0,.07); margin-bottom:32px; overflow:hidden; }
+  .bonus-card .bonus-badge { background:linear-gradient(180deg, var(--red) 0%, var(--red-dark) 100%); color:#fff; font:bold 18px/1.4 Arial; padding:12px 20px; text-align:center; }
+  .bonus-card .img-placeholder { border-radius:0; margin:0; min-height:180px; }
+  .bonus-card .card-body { padding:20px 24px; }
+  .bonus-card .card-body h3 { color:var(--navy); font-size:21px; }
+
+  /* TESTIMONIAL — medical theme: red left border, avatar 56px, stars, 5/5, name below */
+  .testimonial { background:#fff; border-left:4px solid var(--red); border-radius:0 8px 8px 0; padding:20px 22px; margin-bottom:20px; box-shadow:0 1px 6px rgba(0,0,0,.05); display:flex; gap:16px; align-items:flex-start; }
+  .testimonial .avatar { width:56px; height:56px; border-radius:50%; background:#ddd; flex-shrink:0; display:flex; align-items:center; justify-content:center; font:bold 20px Arial; color:#999; overflow:hidden; }
+  .testimonial .t-content { flex:1; }
+  .stars { color:var(--star); font-size:18px; letter-spacing:1px; }
+  .t-name { font:bold 15px/1.4 Arial; color:var(--navy); margin-top:8px; }
+  .t-rating { font:bold 12px/1.4 Arial; color:var(--navy); margin-left:8px; }
+  .testimonial blockquote { font:italic 17px/1.65 Georgia; margin:6px 0 8px; }
+
+  /* GUARANTEE */
+  .guarantee-box { background:#fdfbf5; border:2px solid var(--navy); border-radius:12px; padding:32px 24px; text-align:center; max-width:600px; margin:0 auto; }
+  .guarantee-box img { width:140px; height:auto; margin-bottom:16px; }
+
+  /* FAQ */
+  .faq-item { border-bottom:1px solid #e0e0e0; padding:16px 0; }
+  .faq-item:last-child { border:none; }
+  .faq-q { font:bold 19px/1.4 Georgia; color:var(--navy); }
+  .faq-a { font:17px/1.75 Georgia; color:#444; margin-top:8px; }
+
+  /* FOOTER */
+  footer { background:#111; padding:24px 20px; text-align:center; }
+  footer p { font:13px/1.6 Arial; color:#aaa; margin:0; }
+
+  /* EXIT POPUP */
+  .exit-overlay { display:none; position:fixed; top:0;left:0;right:0;bottom:0; background:rgba(0,0,0,.7); z-index:9998; align-items:center; justify-content:center; }
+  .exit-popup { background:#fff; border:4px solid #333; border-radius:10px; max-width:480px; width:90%; margin:auto; position:relative; overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,.5); }
+  .exit-popup .close-x { position:absolute; top:10px; right:14px; font:bold 22px/1 Arial; color:#999; cursor:pointer; z-index:2; }
+  .exit-popup .ep-header { background:#000; padding:14px 20px; display:flex; align-items:center; gap:14px; }
+  .exit-popup .ep-wait { background:var(--red); color:#fff; font:bold 22px/1.2 Arial; padding:8px 14px; display:inline-block; }
+  .exit-popup .ep-title { color:#fff; font:bold 16px/1.3 Georgia; }
+  .exit-popup .ep-title em { color:var(--red); font-style:italic; }
+  .exit-popup .ep-body { padding:20px 24px; }
+  .exit-popup .ep-body .ep-row { display:flex; gap:16px; margin-bottom:16px; align-items:flex-start; }
+  .exit-popup .ep-body .ep-img { width:120px; height:100px; background:#e8e4db; border:1px dashed #aaa; border-radius:6px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font:italic 11px Arial; color:#888; text-align:center; }
+  .exit-popup .ep-body h4 { font:bold 15px/1.4 Georgia; margin-bottom:6px; }
+  .exit-popup .ep-bullets { list-style:none; padding:0; }
+  .exit-popup .ep-bullets li { font:16px/1.5 Georgia; padding:3px 0 3px 24px; position:relative; }
+  .exit-popup .ep-bullets li::before { content:'✅'; position:absolute; left:0; }
+  .exit-popup .ep-cta { display:block; width:100%; padding:16px; background:var(--green); border:none; border-radius:6px; color:#fff; font:bold 16px/1.3 Arial; text-align:center; cursor:pointer; margin-bottom:10px; text-transform:uppercase; }
+
+  /* MOBILE RESPONSIVE */
+  @media(max-width:700px) {
+    h1 { font-size:22px; margin-bottom:8px; }
+    h2 { font-size:24px; }
+    h3 { font-size:20px; }
+    p, .features li, .bullets li { font-size:17px; }
+    .subhead { font-size:16px; line-height:1.5; margin-bottom:12px; }
+    section { padding:36px 0; }
+    section.tight { padding:16px 0; }
+    .video-placeholder { aspect-ratio:4/5; border-radius:0; }
+    .cta-btn { font-size:16px; padding:16px; }
+    .price-new { font-size:36px; }
+    .countdown .digit { width:48px; font-size:22px; line-height:42px; }
+    .countdown .digit.ms { width:48px; font-size:22px; }
+    .countdown .sep { font-size:22px; line-height:42px; }
+    .testimonial { flex-direction:column; gap:10px; }
+    .testimonial .avatar { width:48px; height:48px; }
+    .testimonial-grid { grid-template-columns:1fr !important; max-width:400px !important; }
+    .scenario-card .img-placeholder { min-height:140px; }
+    .trust-bar { gap:16px; }
+    .trust-item { font-size:12px; }
+    .trust-item .icon { font-size:28px; }
+    .exit-popup .ep-body .ep-row { flex-direction:column; }
+    .exit-popup .ep-body .ep-img { width:100%; height:80px; }
+    /* Mobile hero — minimal, clean */
+    .pre-head { display:none; }
+    .order-status { padding:8px 16px 6px; }
+    .order-status h3 { font-size:14px; margin-bottom:0; }
+    .order-status .dc { display:none; }
+    .video-note { font-size:12px; margin-bottom:6px; }
+    .hero-subhead-mobile-hide { display:none; }
+    .hero-subhead-mobile-show { display:block; }
+    /* Guarantee badge centered on mobile */
+    .guarantee-badge-wrap { width:100%; }
+    /* Mobile progress bar */
+    .progress-bar { margin:6px 8px; border-radius:3px; }
+    .step { font-size:10px; padding:8px 4px; letter-spacing:0; line-height:1.4; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar">
+    <div class="step">Step 1: Complete Your Order</div>
+    <div class="step active">Step 2: Customize Order</div>
+    <div class="step">Step 3: Order Complete</div>
+  </div>
+
+  <!-- ORDER STATUS — Hero: Congratulations in green, double charge warning red -->
+  <div class="order-status">
+    <h3>Congratulations On Your Order!</h3>
+    <p class="sub-line">You Now Qualify For This <strong>One Time Upgrade</strong> That Will Complete Your Emergency Preparedness</p>
+    <p class="dc"><strong>To Prevent Double Charges, DO NOT Press 'Back', Reload, or Close This Page</strong></p>
+  </div>
+
+  <!-- SECTION: HEADLINE + VIDEO -->
+  <section class="tight">
+    <div class="inner">
+      <p class="pre-head">Critical Training Most Gun Owners Skip</p>
+      <h1>You Trained to Shoot. But Can You Save a Life When the Shooting Stops?</h1>
+      <p class="subhead hero-subhead-mobile-hide">The average ambulance takes 8–14 minutes. <strong>A gunshot wound bleeds out in 3.</strong> What happens in that gap — the helplessness, the guilt of watching someone die while you stand there — is on YOU.</p>
+      <p class="video-note">🔊 Make sure your sound is turned ON. This could save someone you love.</p>
+      <div class="video-placeholder">
+        <div class="play"></div>
+        <p>VSL VIDEO — FIRST AID TRAINING VAULT</p>
+      </div>
+      <p class="subhead hero-subhead-mobile-show">The average ambulance takes 8–14 minutes. <strong>A gunshot wound bleeds out in 3.</strong> What happens in that gap — the helplessness, the guilt of watching someone die while you stand there — is on YOU.</p>
+    </div>
+  </section>
+
+  <!-- SECTION: PRODUCT MOCKUP — stacked: headline above, BIG image, text below -->
+  <section class="tight">
+    <div class="inner mockup-section">
+      <p class="tag">Complete Video Training + 2 Free Bonuses</p>
+      <h2>Firearm First Aid Training Vault</h2>
+      <img src="u2-mockup.png" alt="Firearm First Aid Training Vault — Complete Video Training System" style="max-width:700px; width:100%; height:auto; display:block; margin:0 auto;">
+      <p style="text-align:center; font-size:18px; margin-top:12px;">The step-by-step system that gives every responsible gun owner the confidence and medical readiness to act when seconds count most. <strong>Because the worst moment of your life is not the time to learn on the job.</strong></p>
+    </div>
+    <div class="cta-wrap">
+      <div class="countdown" id="countdown1">
+        <div class="digit" id="cd-min">10</div><div class="sep">:</div>
+        <div class="digit" id="cd-sec">00</div><div class="sep">.</div>
+        <div class="digit ms" id="cd-ms">00</div>
+      </div>
+      <div class="price-block">
+        <div class="price-old">Regular Price: $199</div>
+        <div class="price-new">$67 Today Only</div>
+        <div class="price-note">One-Time Payment — No Subscription — Instant Access</div>
+      </div>
+      <a class="cta-btn" href="#">YES! GIVE ME THE LIFESAVING TRAINING — JUST $67</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: SOCIAL PROOF -->
+  <section class="cream tight">
+    <div class="inner" style="text-align:center;">
+      <p style="font:bold 19px/1.5 Georgia; margin-bottom:20px;">Over <strong>860,000</strong> responsible gun owners trust Certified Concealed.<br><span style="color:var(--red);">How many of them could actually save a life when it matters?</span></p>
+      <div class="trust-bar">
+        <div class="trust-item"><span class="icon">🏥</span>Emergency Medical Training</div>
+        <div class="trust-item"><span class="icon">🎬</span>On-Demand Video</div>
+        <div class="trust-item"><span class="icon">📱</span>Any Device</div>
+        <div class="trust-item"><span class="icon">🔒</span>60-Day Guarantee</div>
+      </div>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">YES! I WANT TO BE READY — ADD FIRST AID ($67)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: THE "GAP" — FEAR TRIGGER (emotionally compelling) -->
+  <section class="navy">
+    <div class="inner">
+      <img src="u2-hero.png" alt="Man kneeling over wounded person in parking lot at night — the moment every carrier dreads" style="width:100%; height:auto; display:block; border-radius:8px;">
+      <h2>The Bullet Left the Chamber. Now What?</h2>
+      <p style="font-size:19px; text-align:center;">Every concealed carrier imagines the moment they might have to use their weapon.</p>
+      <p style="font-size:19px; text-align:center;">Almost NONE of them think about what comes after. <strong style="color:#fff;">The person on the ground. Bleeding. Fast.</strong> Your hands are shaking. You call 911.</p>
+      <p style="font-size:19px; text-align:center;">"Help is on the way," they say. ETA: 12 minutes.</p>
+      <p style="font-size:19px; text-align:center;">A gunshot wound to the femoral artery kills in 3 minutes. <strong style="color:#fff;">Do you know what to do in those 9 minutes? Or will you spend the rest of your life replaying the moment you realized you couldn't save them?</strong></p>
+      <p style="font-size:19px; text-align:center; color:#fff;">The guilt of standing there — armed, trained to shoot — but utterly unable to help. That's the gap this training closes.</p>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">YES! I REFUSE TO BE HELPLESS — ADD FIRST AID ($67)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods" style="filter:brightness(2);"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: 3-MINUTE RULE -->
+  <section>
+    <div class="inner">
+      <img src="assets/timeline-3min.png" alt="3-Minute Critical Window — Shot Fired to Ambulance Arrival" style="width:100%; max-width:1000px; height:auto; display:block; margin:0 auto;">
+      <h2>The 3-Minute Rule Every Gun Owner Must Know</h2>
+      <p style="text-align:center; font-size:18px;">Medical professionals call it the "Golden Window." After a severe wound, you have roughly 3 minutes before irreversible blood loss begins.</p>
+      <p style="text-align:center; font-size:18px;"><strong>Ambulances take 8–14 minutes. That's not a gap. That's a death sentence without training.</strong> The worst part? You'll know exactly when it happened. You'll replay the seconds. You'll wonder what you could have done.</p>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">YES! I WON'T STAND THERE HELPLESS — ADD FIRST AID ($67)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: WHAT YOU'LL LEARN — 5 MODULES -->
+  <section class="cream">
+    <div class="inner">
+      <h2>What's Inside the Training Vault</h2>
+      <p style="text-align:center; font-size:18px; margin-bottom:32px;">Five modules that could mean the difference between life and death. The same techniques taught to combat medics — adapted for responsible gun owners.</p>
+
+      <!-- Module 1 -->
+      <div class="scenario-card">
+        <img src="u2-mod1.png" alt="Module 1: CAT Tourniquet application on training mannequin" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Module 1: Stopping the Bleed — Tourniquet Mastery</h3>
+          <p>60% of preventable combat deaths are from blood loss. Learn the exact same tourniquet technique taught to Special Forces medics. Proper placement. Correct tightness. When to use one and when NOT to.</p>
+          <p class="fear-line">Your wife is bleeding from her leg. You have 90 seconds. Do you know what to do?</p>
+        </div>
+      </div>
+
+      <!-- Module 2 -->
+      <div class="scenario-card">
+        <img src="u2-mod2.png" alt="Module 2: Hyfin chest seal application on training mannequin" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Module 2: Chest Wounds — The Silent Killer</h3>
+          <p>A penetrating chest wound collapses a lung in minutes. Learn to identify, seal, and stabilize. The difference between an open and tension pneumothorax — and why getting this wrong kills faster than the bullet.</p>
+          <p class="fear-line">A chest wound makes a sucking sound. If you don't know what that means, it's already too late.</p>
+        </div>
+      </div>
+
+      <!-- Module 3 -->
+      <div class="scenario-card">
+        <img src="u2-mod3.png" alt="Module 3: Pressure bandage and wound packing on training mannequin" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Module 3: Wound Packing & Pressure — When Tourniquets Can't Reach</h3>
+          <p>Neck. Armpit. Groin. Some wounds are in places a tourniquet can't go. Learn direct pressure, wound packing with hemostatic gauze, and the technique that keeps blood inside the body until help arrives.</p>
+        </div>
+      </div>
+
+      <!-- Module 4 -->
+      <div class="scenario-card">
+        <img src="u2-mod4.png" alt="Module 4: Calling 911 while providing emergency care" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Module 4: Calling 911 — What to Say (and What NEVER to Say)</h3>
+          <p>The wrong words on a 911 call can land you in prison. The right words save lives AND protect you legally. Exact scripts. Exact sequence. What the dispatcher needs and what your lawyer needs you to NOT say.</p>
+          <p class="fear-line">"I shot someone" vs. "Someone's been shot" — those 2 words change your entire legal future.</p>
+        </div>
+      </div>
+
+      <!-- Module 5 -->
+      <div class="scenario-card">
+        <img src="u2-mod5.png" alt="Module 5: Shock management — maintaining warmth and position" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Module 5: Managing Shock — Keeping Them Alive Until Help Arrives</h3>
+          <p>Even after you stop the bleeding, shock kills. Pale skin. Rapid breathing. Confusion. Learn the exact positioning, temperature management, and monitoring that keeps the body from shutting down.</p>
+          <p class="fear-line">Even after you stop the bleed, shock can finish the job. Do you know the signs?</p>
+        </div>
+      </div>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">YES! TEACH ME TO SAVE A LIFE — $67</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: BONUS STACK -->
+  <section>
+    <div class="inner">
+      <h2>Included FREE With Your Training Today</h2>
+
+      <!-- Bonus 1 -->
+      <div class="bonus-card">
+        <div class="bonus-badge">🎁 FREE BONUS #1 — Worth $97</div>
+        <img src="u2-bonus1.png" alt="FREE BONUS: Emergency Response Management Guide" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>The Emergency Response Management Guide</h3>
+          <p>Adapted from FEMA, OSHA, and tactical response protocols. Your complete civilian field manual for crisis control. Home emergency plans, vehicle emergency plans, communication when 911 is down, and how to coordinate when everyone else panics.</p>
+          <p style="text-align:center; font-weight:bold; color:var(--green); font-size:20px; margin-top:16px;">TODAY FREE</p>
+        </div>
+      </div>
+
+      <!-- Bonus 2 -->
+      <div class="bonus-card">
+        <div class="bonus-badge">🎁 FREE BONUS #2 — Worth $47</div>
+        <img src="u2-bonus2.png" alt="FREE BONUS: Gun Owner's Trauma First Aid Checklist" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Gun Owner's Essential Trauma First Aid Checklist</h3>
+          <p>Printable quick-action reference. Tourniquet steps. Pressure bandage steps. Chest seal steps. The 3-Minute Triage priority list. Keep it in your range bag, your truck, and your nightstand. When panic hits, this card thinks for you.</p>
+          <p style="text-align:center; font-weight:bold; color:var(--green); font-size:20px; margin-top:16px;">TODAY FREE</p>
+        </div>
+      </div>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">YES! I WANT THE TRAINING + FREE BONUSES ($67)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: TESTIMONIALS — Facebook screenshot grid -->
+  <section class="cream">
+    <div class="inner">
+      <h2>Real Gun Owners. Real Wake-Up Calls.</h2>
+      <p style="text-align:center; font-size:18px; margin-bottom:28px; color:#666;">Here's what everyday carriers are saying after going through the First Aid Training Vault:</p>
+
+      <div class="testimonial-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:800px; margin:0 auto;">
+        <img src="u2-t-daniel.png" alt="Testimonial — Daniel Carpenter" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="u2-t-richard.png" alt="Testimonial — Richard Hayes" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="u2-t-christopher.png" alt="Testimonial — Christopher Lee" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="u2-t-brian.png" alt="Testimonial — Brian Thompson" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="u2-t-gregory.png" alt="Testimonial — Gregory Wilson" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="u2-t-joseph.png" alt="Testimonial — Joseph Martinez" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="u2-t-william.png" alt="Testimonial — William Brooks" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="u2-t-anthony.png" alt="Testimonial — Anthony Davis" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+      </div>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">REAL PEOPLE TRUST THIS TRAINING — I'M IN ($67)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: GUARANTEE — Credit Secrets-inspired copy -->
+  <section>
+    <div class="inner">
+      <div class="guarantee-box" style="text-align:left; max-width:700px;">
+        <h2 style="text-align:center; font-size:26px; color:var(--red); margin-bottom:4px;">👉 The Best Money-Back Guarantee In The Industry 👈</h2>
+        <h3 style="text-align:center; font-size:20px; margin-bottom:16px;">Try It Out For A Full 60 Days To See If It's Right For You!</h3>
+        <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+          <div style="flex:1; min-width:260px;">
+            <p>See, I don't want you feeling like you're taking any kind of "risk" or "chance" on this. I want you to be <strong>fully confident</strong> this is exactly what you've been looking for.</p>
+            <p>Something that could genuinely save a life when it matters most. So I'd like to give you a full 60 days to try it out. Meaning you don't even have to say "Yes" today — just say "Maybe" — and <strong>try the training completely risk-free for a full 60 days.</strong></p>
+          </div>
+          <div class="guarantee-badge-wrap" style="flex-shrink:0; text-align:center;"><img src="guarantee-badge.png" alt="60-Day Money Back Guarantee" style="width:160px;"></div>
+        </div>
+        <div style="background:var(--red); color:#fff; text-align:center; padding:10px 16px; border-radius:4px; margin:16px 0 12px; font:bold 20px/1.4 Arial;">It Works — Or It's FREE 🙌</div>
+        <p>I realize opportunities like this don't come around every day, and when they do, there is usually a "catch."</p>
+        <p>So I don't blame you if you think this offer is too good to be true... But I am happy to tell you that with the First Aid Training Vault...</p>
+        <p><strong style="font-size:19px;">There is absolutely NO catch, NO obligation, and NO risk to you whatsoever.</strong></p>
+        <p><u>Try the First Aid Training Vault for a full 60 days — absolutely Risk-free.</u> Go through every module. Practice every technique.</p>
+        <p>If you find for any reason (or no reason at all) that this doesn't work exactly as I've described, all you have to do is send us an email,</p>
+        <p>And we will personally see to it that you are refunded every single penny of your investment — <strong style="text-decoration:underline; font-size:19px;">NO QUESTIONS ASKED!</strong></p>
+        <p><strong>Plus — you can keep all your access as our way of saying thanks for trying it out.</strong></p>
+      </div>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">I'M PROTECTED BY THE 60-DAY GUARANTEE — ADD TO ORDER ($67)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: FAQ -->
+  <section class="cream">
+    <div class="inner" style="max-width:700px;">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <p class="faq-q">How do I access the training?</p>
+        <p class="faq-a">Instantly. The moment your order confirms, you'll get a login link. Start watching in 60 seconds on any device.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Is this a subscription? Will I be charged again?</p>
+        <p class="faq-a"><strong>Absolutely NOT.</strong> One-time $67 payment. Lifetime access. No hidden fees. No monthly charges. Ever.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Can I watch on my phone?</p>
+        <p class="faq-a">Yes. Phone, tablet, laptop, desktop, smart TV — anywhere you have internet.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Do I need medical experience?</p>
+        <p class="faq-a">Zero experience needed. This is built for regular people, not paramedics. Step-by-step, beginner-friendly.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Is this just basic first aid?</p>
+        <p class="faq-a">No. This is TRAUMA first aid — specifically for gunshot wounds, severe bleeding, and high-stress emergencies. Your Red Cross CPR card doesn't cover this.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">What if I'm not satisfied?</p>
+        <p class="faq-a">60-day money-back guarantee. Full refund. You keep the access. Zero risk to you. The only risk is not having this training when it matters.</p>
+      </div>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">YES! ADD FIRST AID TO MY ORDER — $67</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA — with product mockup placeholder again -->
+  <section class="gradient" style="padding:48px 0;">
+    <div class="inner" style="text-align:center;">
+      <h2 style="font-size:30px;">3 Minutes. That's All You Have. Will You Be Ready?</h2>
+      <img src="u2-mockup.png" alt="Firearm First Aid Training Vault" style="max-width:500px; width:100%; height:auto; display:block; margin:0 auto; border-radius:8px;">
+    </div>
+    <div class="cta-wrap">
+      <div class="price-block">
+        <div class="price-old" style="color:#aaa;">$199</div>
+        <div class="price-new">$67 TODAY</div>
+        <div style="font:15px/1.4 Arial; color:var(--cream);">One-Time | Instant Access | 60-Day Guarantee | 2 FREE Bonuses</div>
+      </div>
+      <a class="cta-btn" href="#">LAST CHANCE — GET FIRST AID TRAINING BEFORE IT'S GONE ($67)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods" style="filter:brightness(2); max-width:380px;"></div>
+      <a class="shame light" href="#">No thanks, <strong>I'll hope someone else knows what to do if my family gets shot. I'm okay with that.</strong></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Certified Concealed. All Rights Reserved.<br>Educational purposes only. Not medical advice.<br>Privacy Policy | Terms | Contact</p>
+  </footer>
+
+</div>
+
+<!-- EXIT POPUP — same structure as upsell1 -->
+<div class="exit-overlay" id="exitPopup">
+  <div class="exit-popup">
+    <span class="close-x" id="exitClose">✕</span>
+    <div class="ep-header">
+      <span class="ep-wait">WAIT!</span>
+      <span class="ep-title">Before You Go... Your <em>Exclusive Discount</em> Disappears Forever</span>
+    </div>
+    <div class="ep-body">
+      <div class="ep-row">
+        <img src="u2-mockup.png" alt="First Aid Training Vault" style="width:120px; height:auto; flex-shrink:0; border-radius:6px;">
+        <div>
+          <h4 style="color:var(--navy);">First Aid Training Vault — Save a Life When It Matters</h4>
+          <ul class="ep-bullets">
+            <li>5 trauma first aid modules (tourniquet, chest seal, pressure, 911, shock)</li>
+            <li>2 FREE bonuses ($144 value)</li>
+            <li>The 3-minute rule that could save someone you love</li>
+            <li>Instant access on any device</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font:bold 16px/1.4 Arial; color:var(--red); text-align:center;">⚠️ This $67 price disappears when you leave this page.</p>
+      <button class="ep-cta" id="exitAccept">YES! ADD FIRST AID TO MY ORDER — $67</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// 10-minute countdown timer with milliseconds
+(function(){
+  var totalMs = 600000;
+  var minEl = document.getElementById('cd-min');
+  var secEl = document.getElementById('cd-sec');
+  var msEl = document.getElementById('cd-ms');
+  var last = Date.now();
+  function update(){
+    var now = Date.now();
+    totalMs -= (now - last);
+    last = now;
+    if(totalMs <= 0){ totalMs=0; minEl.textContent='00'; secEl.textContent='00'; msEl.textContent='00'; return; }
+    var m = Math.floor(totalMs/60000);
+    var s = Math.floor((totalMs%60000)/1000);
+    var cs = Math.floor((totalMs%1000)/10);
+    minEl.textContent = (m<10?'0':'')+m;
+    secEl.textContent = (s<10?'0':'')+s;
+    msEl.textContent = (cs<10?'0':'')+cs;
+    requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+})();
+
+// Exit-intent — re-shows every time with 3s cooldown
+(function(){
+  var cooldown = false;
+  var popup = document.getElementById('exitPopup');
+  function closePopup(){ popup.style.display='none'; cooldown=true; setTimeout(function(){ cooldown=false; }, 3000); }
+  document.getElementById('exitClose').addEventListener('click', closePopup);
+  document.getElementById('exitAccept').addEventListener('click', closePopup);
+  document.addEventListener('mouseout', function(e){
+    if(!cooldown && e.clientY < 5 && popup.style.display !== 'flex'){
+      popup.style.display = 'flex';
+    }
+  });
+})();
+</script>
+</body>
+</html>
