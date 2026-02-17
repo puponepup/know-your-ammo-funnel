@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIREFRAME — Upsell 1: UNTHINKABLE ($97) — Español</title>
+<style>
+  :root {
+    --navy: #1a1a2e;
+    --red: #cc0000;
+    --red-dark: #a30000;
+    --green: #28a745;
+    --green-dark: #1e7e34;
+    --cream: #f5f0e0;
+    --light-cream: #f8f7f5;
+    --white: #ffffff;
+    --star: #f5c518;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#e8e8e8; font-family: Georgia, 'Times New Roman', serif; color:var(--navy); -webkit-font-smoothing:antialiased; }
+
+  /* PAGE WRAPPER — wider, more flush with edges */
+  .page { max-width:960px; margin:0 auto; background:var(--white); box-shadow:0 0 30px rgba(0,0,0,.08); }
+
+  /* INNER CONTAINERS */
+  .inner { max-width:760px; margin:0 auto; padding:0 20px; }
+  .inner-narrow { max-width:600px; margin:0 auto; padding:0 20px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { display:flex; border-radius:4px; overflow:hidden; margin:10px 20px; border:1px solid #ccc; }
+  .step { flex:1; text-align:center; font:bold 13px Arial, sans-serif; text-transform:uppercase; letter-spacing:.3px; color:#888; background:#f8f8f8; border-right:1px solid #ccc; padding:14px 10px; line-height:1.4; }
+  .step:last-child { border-right:none; }
+  .step.active { background:#4CAF50; color:#fff; }
+
+  /* WARNING / ORDER STATUS */
+  .order-status { text-align:center; padding:18px 20px 8px; background:var(--white); }
+  .order-status h3 { font-size:21px; color:var(--red); margin-bottom:4px; font-family:Arial,sans-serif; }
+  .order-status .dc { font-size:13px; color:var(--red); font-style:italic; font-family:Arial,sans-serif; }
+
+  /* SECTIONS */
+  section { padding:48px 0; }
+  section.tight { padding:20px 0; }
+  section.cream { background:var(--light-cream); }
+  section.navy { background:var(--navy); }
+  section.navy, section.navy * { color:var(--cream); }
+  section.navy h2, section.navy h3 { color:#fff; }
+  section.gradient { background:linear-gradient(180deg, var(--navy) 0%, #0a0a15 100%); }
+  section.gradient, section.gradient * { color:var(--cream); }
+  section.gradient h2 { color:#fff; }
+
+  /* TYPOGRAPHY — 50+ optimized */
+  .pre-head { font:bold 14px/1.4 Arial, sans-serif; text-transform:uppercase; color:var(--red); letter-spacing:3px; text-align:center; margin-bottom:14px; }
+  h1 { font-size:36px; line-height:1.25; font-weight:bold; text-align:center; margin-bottom:18px; }
+  h2 { font-size:28px; line-height:1.3; font-weight:bold; text-align:center; margin-bottom:20px; }
+  h3 { font-size:22px; font-weight:bold; margin-bottom:10px; }
+  p { font-size:18px; line-height:1.75; margin-bottom:14px; }
+  .subhead { font-size:20px; line-height:1.65; text-align:center; margin-bottom:24px; }
+  .hero-subhead-mobile-show { display:none; }
+  .bold-highlight { font-weight:bold; color:var(--red); }
+
+  /* VIDEO PLACEHOLDER */
+  .video-placeholder { background:#111; border-radius:8px; max-width:100%; margin:20px auto; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; aspect-ratio:16/9; }
+  .video-placeholder .play { width:64px; height:64px; border-radius:50%; background:rgba(204,0,0,.85); display:flex; align-items:center; justify-content:center; }
+  .video-placeholder .play::after { content:''; border-left:20px solid #fff; border-top:12px solid transparent; border-bottom:12px solid transparent; margin-left:5px; }
+  .video-placeholder p { color:#888; font:13px/1.4 Arial; }
+  .video-note { text-align:center; font:bold 14px/1.4 Arial; color:var(--red); margin-bottom:4px; }
+
+  /* IMAGE PLACEHOLDER */
+  .img-placeholder { background:#e8e4db; border:2px dashed #aaa; border-radius:8px; display:flex; align-items:center; justify-content:center; text-align:center; padding:24px 16px; margin:20px auto; color:#777; font:italic 13px/1.5 Arial, sans-serif; position:relative; }
+  .img-placeholder .prompt-num { position:absolute; top:6px; left:10px; background:var(--navy); color:#fff; font:bold 10px/20px Arial; padding:0 7px; border-radius:3px; }
+
+  /* PRODUCT MOCKUP — full width, stacked */
+  .mockup-section { text-align:center; }
+  .mockup-section .img-placeholder { max-width:700px; min-height:320px; }
+  .mockup-section .tag { font:bold 13px/1.4 Arial; text-transform:uppercase; color:var(--red); letter-spacing:2px; margin-bottom:10px; }
+  .mockup-section h2 { margin-top:16px; }
+
+  /* CTA BUTTON */
+  .cta-wrap { max-width:560px; margin:0 auto; padding:10px 20px; }
+  .cta-btn { display:block; width:100%; padding:18px 20px; background:linear-gradient(180deg, var(--green) 0%, var(--green-dark) 100%); border:none; border-radius:8px; color:#fff; font:bold 18px/1.3 Arial, sans-serif; text-align:center; text-transform:uppercase; cursor:pointer; box-shadow:0 4px 16px rgba(40,167,69,.3); text-decoration:none; animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{box-shadow:0 4px 16px rgba(40,167,69,.3)} 50%{box-shadow:0 4px 28px rgba(40,167,69,.55)} }
+  .cta-sub { text-align:center; margin-top:10px; }
+  .cta-sub img { max-width:380px; width:100%; height:auto; }
+  .shame { display:block; text-align:center; font:italic 15px/1.5 Georgia; color:#666; margin-top:18px; text-decoration:underline; cursor:pointer; }
+  .shame.light { color:rgba(245,240,224,.6); }
+  .shame strong { font-weight:bold; }
+
+  /* PRICE */
+  .price-block { text-align:center; margin:16px auto; }
+  .price-old { font:20px/1.4 Arial; text-decoration:line-through; color:#888; }
+  .price-new { font:bold 44px/1.2 Arial; color:var(--green); margin:6px 0; }
+  .price-note { font:15px/1.4 Arial; color:var(--navy); }
+
+  /* COUNTDOWN */
+  .countdown { display:flex; justify-content:center; gap:8px; margin:16px auto; align-items:center; }
+  .countdown .digit { background:var(--red); color:#fff; font:bold 28px/50px Arial; width:60px; text-align:center; border-radius:6px; }
+  .countdown .digit.ms { font-size:28px; width:60px; line-height:50px; background:var(--red); }
+  .countdown .sep { font:bold 28px/50px Arial; color:var(--red); }
+
+  /* TRUST BAR */
+  .trust-bar { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; margin:20px auto; }
+  .trust-item { text-align:center; font:bold 14px/1.4 Arial; color:var(--navy); }
+  .trust-item .icon { font-size:36px; display:block; margin-bottom:4px; }
+  .trust-item .icon-img { width:72px; height:72px; display:block; margin:0 auto 8px; }
+
+  /* FEATURE LIST */
+  .features { list-style:none; padding:0; margin:16px 0; }
+  .features li { font-size:18px; line-height:1.55; padding:5px 0 5px 30px; position:relative; }
+  .features li::before { content:'✅'; position:absolute; left:0; top:5px; }
+
+  /* BULLET LIST */
+  .bullets { list-style:none; padding:0; margin:14px 0; }
+  .bullets li { font:bold 18px/1.55 Georgia; padding:6px 0 6px 22px; position:relative; }
+  .bullets li::before { content:'•'; position:absolute; left:0; font-size:22px; color:var(--red); }
+
+  /* SCENARIO CARD */
+  .scenario-card { background:#fff; border-radius:10px; box-shadow:0 2px 12px rgba(0,0,0,.07); margin-bottom:32px; overflow:hidden; }
+  .scenario-card .img-placeholder { border-radius:0; margin:0; min-height:180px; }
+  .scenario-card .card-body { padding:20px 24px; }
+  .scenario-card h3 { color:var(--navy); font-size:21px; }
+  .fear-line { font:bold italic 17px/1.5 Georgia; color:var(--red); margin-top:10px; }
+
+  /* TESTIMONIAL */
+  .testimonial { background:#fff; border-left:4px solid var(--navy); border-radius:0 8px 8px 0; padding:20px 22px; margin-bottom:20px; box-shadow:0 1px 6px rgba(0,0,0,.05); display:flex; gap:16px; align-items:flex-start; }
+  .testimonial .avatar { width:56px; height:56px; border-radius:50%; background:#ddd; flex-shrink:0; display:flex; align-items:center; justify-content:center; font:bold 20px Arial; color:#999; overflow:hidden; }
+  .testimonial .t-content { flex:1; }
+  .stars { color:var(--star); font-size:18px; letter-spacing:1px; }
+  .t-name { font:bold 15px/1.4 Arial; color:var(--navy); }
+  .t-rating { font:bold 12px/1.4 Arial; color:var(--navy); margin-left:8px; }
+  .testimonial blockquote { font:italic 17px/1.65 Georgia; margin:6px 0 8px; }
+
+  /* GUARANTEE */
+  .guarantee-box { background:#fdfbf5; border:2px solid var(--navy); border-radius:12px; padding:32px 24px; text-align:center; max-width:600px; margin:0 auto; }
+  .guarantee-box img { width:140px; height:auto; margin-bottom:16px; }
+
+  /* FAQ */
+  .faq-item { border-bottom:1px solid #e0e0e0; padding:16px 0; }
+  .faq-item:last-child { border:none; }
+  .faq-q { font:bold 19px/1.4 Georgia; color:var(--navy); }
+  .faq-a { font:17px/1.75 Georgia; color:#444; margin-top:8px; }
+
+  /* FOOTER */
+  footer { background:#111; padding:24px 20px; text-align:center; }
+  footer p { font:13px/1.6 Arial; color:#aaa; margin:0; }
+
+  /* EXIT POPUP */
+  .exit-overlay { display:none; position:fixed; top:0;left:0;right:0;bottom:0; background:rgba(0,0,0,.7); z-index:9998; align-items:center; justify-content:center; }
+  .exit-popup { background:#fff; border:4px solid #333; border-radius:10px; max-width:480px; width:90%; margin:auto; position:relative; overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,.5); }
+  .exit-popup .close-x { position:absolute; top:10px; right:14px; font:bold 22px/1 Arial; color:#999; cursor:pointer; z-index:2; }
+  .exit-popup .ep-header { background:#000; padding:14px 20px; display:flex; align-items:center; gap:14px; }
+  .exit-popup .ep-wait { background:var(--red); color:#fff; font:bold 22px/1.2 Arial; padding:8px 14px; display:inline-block; }
+  .exit-popup .ep-title { color:#fff; font:bold 16px/1.3 Georgia; }
+  .exit-popup .ep-title em { color:var(--red); font-style:italic; }
+  .exit-popup .ep-body { padding:20px 24px; }
+  .exit-popup .ep-body .ep-row { display:flex; gap:16px; margin-bottom:16px; align-items:flex-start; }
+  .exit-popup .ep-body .ep-img { width:120px; height:100px; background:#e8e4db; border:1px dashed #aaa; border-radius:6px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font:italic 11px Arial; color:#888; text-align:center; }
+  .exit-popup .ep-body h4 { font:bold 15px/1.4 Georgia; margin-bottom:6px; }
+  .exit-popup .ep-bullets { list-style:none; padding:0; }
+  .exit-popup .ep-bullets li { font:16px/1.5 Georgia; padding:3px 0 3px 24px; position:relative; }
+  .exit-popup .ep-bullets li::before { content:'✅'; position:absolute; left:0; }
+  .exit-popup .ep-cta { display:block; width:100%; padding:16px; background:var(--green); border:none; border-radius:6px; color:#fff; font:bold 16px/1.3 Arial; text-align:center; cursor:pointer; margin-bottom:10px; text-transform:uppercase; }
+  .exit-popup .ep-decline { display:block; width:100%; padding:12px; background:#ddd; border:none; border-radius:6px; color:#666; font:14px/1.3 Arial; text-align:center; cursor:pointer; }
+
+  /* MOBILE RESPONSIVE */
+  @media(max-width:700px) {
+    h1 { font-size:22px; margin-bottom:8px; }
+    h2 { font-size:22px; }
+    h3 { font-size:19px; }
+    p, .features li, .bullets li { font-size:16px; }
+    .subhead { font-size:16px; line-height:1.5; margin-bottom:12px; }
+    section { padding:24px 0; }
+    section.tight { padding:16px 0; }
+    .video-placeholder { aspect-ratio:4/5; border-radius:0; }
+    .cta-btn { font-size:16px; padding:16px; }
+    .price-new { font-size:36px; }
+    .countdown .digit { width:48px; font-size:22px; line-height:42px; }
+    .countdown .digit.ms { width:48px; font-size:22px; }
+    .countdown .sep { font-size:22px; line-height:42px; }
+    .testimonial { flex-direction:column; gap:10px; }
+    .testimonial .avatar { width:48px; height:48px; }
+    .scenario-card img { width:100%; }
+    .testimonial-grid { grid-template-columns:1fr !important; max-width:400px !important; }
+    .trust-bar { gap:16px; }
+    .trust-item { font-size:12px; }
+    .trust-item .icon { font-size:28px; }
+    .trust-item .icon-img { width:56px; height:56px; margin-bottom:6px; }
+    .exit-popup .ep-body .ep-row { flex-direction:column; }
+    .exit-popup .ep-body .ep-img { width:100%; height:80px; }
+    /* Mobile hero — minimal: just warning + headline + video */
+    .pre-head { display:none; }
+    .order-status { padding:8px 16px 6px; }
+    .order-status h3 { font-size:14px; margin-bottom:0; }
+    .order-status .dc { display:none; }
+    .video-note { font-size:12px; margin-bottom:6px; }
+    .hero-subhead-mobile-hide { display:none; }
+    .hero-subhead-mobile-show { display:block; }
+    /* Guarantee badge centered on mobile */
+    .guarantee-badge-wrap { width:100%; }
+    /* Mobile progress bar */
+    .progress-bar { margin:6px 8px; border-radius:3px; }
+    .step { font-size:10px; padding:8px 4px; letter-spacing:0; line-height:1.4; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar">
+    <div class="step active">Paso 1: Completa tu pedido</div>
+    <div class="step">Paso 2: Personaliza tu pedido</div>
+    <div class="step">Paso 3: Pedido completado</div>
+  </div>
+
+  <!-- ORDER STATUS -->
+  <div class="order-status">
+    <h3>⚠️ ¡ESPERA! Tu pedido aún NO está completo...</h3>
+    <p class="dc"><strong>Para evitar cargos duplicados, NO presiones 'Atrás', recargues ni cierres esta página</strong></p>
+  </div>
+
+  <!-- SECTION: HEADLINE + VIDEO -->
+  <section class="tight">
+    <div class="inner">
+      <h1>Obtuviste tu permiso. Pero ¿estás realmente preparado para lo que viene después?</h1>
+      <p class="subhead hero-subhead-mobile-hide">El 97% de quienes tienen permiso NUNCA se han entrenado para las situaciones reales que terminan carreras, destruyen familias y ponen a personas buenas tras las rejas. <strong>Este video de 4 minutos podría cambiar todo.</strong></p>
+      <p class="video-note">🔊 Asegúrate de tener el sonido encendido. Tus próximos pasos aparecen después del video.</p>
+      <div class="video-placeholder">
+        <div class="play"></div>
+        <p>VSL VIDEO — UNTHINKABLE</p>
+      </div>
+      <p class="subhead hero-subhead-mobile-show">El 97% de quienes tienen permiso NUNCA se han entrenado para las situaciones reales que terminan carreras, destruyen familias y ponen a personas buenas tras las rejas. <strong>Este video de 4 minutos podría cambiar todo.</strong></p>
+    </div>
+  </section>
+
+  <!-- SECTION: PRODUCT MOCKUP + FIRST CTA -->
+  <section class="tight">
+    <div class="inner mockup-section">
+      <p class="tag">Entrenamiento en video exclusivo</p>
+      <h2>UNTHINKABLE: Cómo manejar los 10 escenarios de defensa con arma más inesperados</h2>
+      <img src="u1-mockup.png" alt="UNTHINKABLE — Sistema de entrenamiento completo" style="max-width:700px; width:100%; height:auto; display:block; margin:0 auto;">
+      <p style="text-align:center; font-size:18px; margin-top:12px;">Tu clase de permiso te enseñó la ley. Te enseñó a apuntar. <strong>Pero NUNCA te enseñó qué hacer cuando tu entrenamiento se enfrenta al caos de la vida real.</strong></p>
+    </div>
+    <div class="cta-wrap">
+      <div class="countdown" id="countdown1">
+        <div class="digit" id="cd-min">10</div><div class="sep">:</div>
+        <div class="digit" id="cd-sec">00</div><div class="sep">.</div>
+        <div class="digit ms" id="cd-ms">00</div>
+      </div>
+      <div class="price-block">
+        <div class="price-old">Precio regular: $497</div>
+        <div class="price-new">$97 Solo hoy</div>
+        <div class="price-note">Pago único — Sin suscripción — Acceso instantáneo</div>
+      </div>
+      <a class="cta-btn" href="#">¡SÍ! DAME ACCESO INSTANTÁNEO A LOS 10 ESCENARIOS — $97</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Métodos de pago"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: SOCIAL PROOF -->
+  <section class="cream tight">
+    <div class="inner" style="text-align:center;">
+      <p style="font:bold 19px/1.5 Georgia; margin-bottom:20px;">Más de <strong>860,000</strong> titulares de permiso confían en Certified Concealed.<br><span style="color:var(--red);">¿Cuántos de ellos están REALMENTE preparados para lo que estás a punto de ver?</span></p>
+      <div class="trust-bar">
+        <div class="trust-item"><img src="assets/icon-scenarios.png" alt="" class="icon-img">10 escenarios reales</div>
+        <div class="trust-item"><img src="assets/icon-video.png" alt="" class="icon-img">Lecciones en video HD</div>
+        <div class="trust-item"><img src="assets/icon-device.png" alt="" class="icon-img">Cualquier dispositivo</div>
+        <div class="trust-item"><img src="assets/icon-guarantee.png" alt="" class="icon-img">Garantía de 60 días</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: "THE PROBLEM" — EMOTIONAL DIG -->
+  <section class="navy">
+    <div class="inner">
+      <h2>Esto es lo que nadie te dijo después de obtener tu permiso</h2>
+      <p style="font-size:19px; text-align:center;">Tu permiso dice que aprobaste un examen. <strong style="color:#fff;">NO</strong> dice que estás preparado. Hay una brecha enorme entre "legalmente autorizado a portar" y "saber realmente qué hacer cuando todo se sale de control."</p>
+      <p style="font-size:19px; text-align:center;">Ahora mismo, portas un arma de fuego todos los días — pero nunca te has entrenado para las situaciones que REALMENTE le pasan a personas como tú. <strong style="color:#fff;">Ni en el polígono. Ni en el aula. El mundo real.</strong></p>
+      <p style="font-size:19px; text-align:center; color:#fff;"><strong>UNTHINKABLE fue creado para cerrar esa brecha. 10 escenarios. 10 momentos donde todo lo que creías saber se pone a prueba.</strong></p>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">¡SÍ! CIERRA MI BRECHA DE ENTRENAMIENTO AHORA — SOLO $97</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Métodos de pago" style="filter:brightness(2);"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: 10 SCENARIO CARDS -->
+  <section class="cream">
+    <div class="inner">
+      <h2>Qué incluye: 10 escenarios del mundo real que podrían pasarte <em>esta semana</em></h2>
+      <p style="text-align:center; font-size:18px; margin-bottom:32px;">Cada escenario incluye entrenamiento táctico paso a paso, umbrales legales para actuar, ejercicios de preparación emocional y múltiples ramas de resultado para que estés listo sin importar cómo se desarrolle la situación.</p>
+
+      <!-- S1 -->
+      <div class="scenario-card">
+        <img src="u1-s1.png" alt="Escenario 1: Niño alcanza un arma en una fiesta" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Escenario 1: La fiesta donde un niño encuentra un arma cargada</h3>
+          <p>Un niño de 6 años alcanza una pistola cargada sobre una mesa auxiliar en una fiesta en casa. Los adultos están bebiendo. La música está alta. <strong>Solo tú ves al niño.</strong></p>
+          <p>¿Gritas? ¿Agarras el arma? ¿Agarras al niño? ¿Y si el arma se dispara mientras te acercas? ¿Y si el padre se pone agresivo contigo por "exagerar"?</p>
+          <p class="fear-line">Esto pasa 8 veces AL DÍA en Estados Unidos. Tu sobrino. Tu nieto. El hijo de tu vecino. ¿Sabrías qué hacer — sin empeorar las cosas?</p>
+        </div>
+      </div>
+
+      <!-- S2 -->
+      <div class="scenario-card">
+        <img src="u1-s2.png" alt="Escenario 2: Robo activo en tienda" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Escenario 2: Robo activo — Estás en la fila de caja, armado</h3>
+          <p>Un hombre enmascarado irrumpe en la entrada de tu supermercado. Grita. El cajero está paralizado. Hay 15 civiles entre tú y la salida. <strong>Tu mano va a tu cadera.</strong></p>
+          <p>¿Desenfundas? ¿Esperas? ¿Y si hay un segundo atacante? ¿Y si un espectador te agarra porque cree que TÚ eres la amenaza? ¿Qué le dices a la policía cuando llega y te ve con un arma?</p>
+          <p class="fear-line">Llegar a la conclusión equivocada y te conviertes en la amenaza — o en la víctima. No hay "segunda oportunidad."</p>
+        </div>
+      </div>
+
+      <!-- S3 -->
+      <div class="scenario-card">
+        <img src="u1-s3.png" alt="Escenario 3: Perro envenenado, figura sospechosa se acerca" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Escenario 3: Tu perro fue envenenado — y alguien está vigilando tu casa</h3>
+          <p>El perro de la familia colapsa en el camino de entrada al atardecer. Ves una figura alejándose cerca de la cerca. Tu esposa está adentro con los niños. <strong>Tu corazón late fuerte.</strong></p>
+          <p>¿Es el preludio de una invasión? ¿Persigues? ¿Te retiras adentro y te encierras? ¿En qué momento tienes el derecho legal de usar tu arma?</p>
+          <p class="fear-line">Cuando llamas al 911, la figura ya se fue. Pero conocen tu rutina. Saben que tu perro ya no está. Y volverán.</p>
+        </div>
+      </div>
+
+      <!-- S4 -->
+      <div class="scenario-card">
+        <img src="u1-s4.png" alt="Escenario 4: Ira al volante con familia en el auto" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Escenario 4: La ira al volante se vuelve letal — Tu esposa y tu hijo están en el auto</h3>
+          <p>Un hombre de 110 kg sale de su camioneta y embiste tu sedán. Grita. Golpea tu ventana. Tu esposa llora. Tu hijo de 3 años está en el asiento trasero. <strong>Sientes la funda presionando tu cadera.</strong></p>
+          <p>Desenfundar y podrías ir a prisión 15 años. No desenfundar y tu familia podría no llegar a casa esta noche. <strong>Tienes unos 4 segundos para decidir.</strong></p>
+          <p class="fear-line">Ningún ejercicio en el polígono te preparó para esto. Ninguna clase de permiso lo mencionó. ¿Qué haces?</p>
+        </div>
+      </div>
+
+      <!-- S5 -->
+      <div class="scenario-card">
+        <img src="u1-s5.png" alt="Escenario 5: Adolescente ondeando arma en el patio" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Escenario 5: El adolescente de al lado ondea un arma en su patio</h3>
+          <p>Estás asando un sábado por la tarde. El vecino de 16 años saca lo que parece una pistola real y la ondea ante sus amigos mientras graban con sus celulares. Tus hijos juegan a 9 metros.</p>
+          <p>¿Es real? ¿Es una pistola de balines? ¿Lo confrontas? ¿Llamas a la policía? ¿Y si te la apunta? <strong>¿En qué momento tienes derecho a desenfundar?</strong></p>
+          <p class="fear-line">La línea entre "vecino preocupado" y "acusado en un juicio por disparos" es más delgada de lo que crees.</p>
+        </div>
+      </div>
+
+      <!-- S6 -->
+      <div class="scenario-card">
+        <img src="u1-s6.png" alt="Escenario 6: Niño encuentra arma en pijamada" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Escenario 6: Tu hijo encuentra un arma en una pijamada</h3>
+          <p>Tu hijo de 9 años te llama a medianoche desde la casa de un amigo. Susurrando. "Papá... hay un arma debajo de la cama. Tommy se la estaba mostrando a todos." Se te cae el estómago.</p>
+          <p>¿Llamas a los padres anfitriones? ¿Llamas al 911? ¿Vas por tu hijo de inmediato? <strong>Y cuando termine — ¿presentas cargos? ¿Adviertes a otros padres?</strong></p>
+          <p class="fear-line">Tu hijo va a pijamadas cada mes. ¿Alguna vez les has preguntado a los otros padres si tienen armas sin asegurar?</p>
+        </div>
+      </div>
+
+      <!-- S7 -->
+      <div class="scenario-card">
+        <img src="u1-s7.png" alt="Escenario 7: Arma cae al piso del restaurante" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Escenario 7: Un arma se cae del bolso de alguien en un restaurante lleno</h3>
+          <p>Estás cenando con tu familia. Una pistola negra se desliza por el piso de baldosas desde la mesa detrás de ti. Los comensales gritan. Alguien se lanza por ella. El dueño entra en pánico. <strong>Tu esposa te agarra el brazo — "¡Haz algo!"</strong></p>
+          <p>¿La recoges? ¿La dejas? ¿Anuncias que estás armado? ¿Y si alguien cree que la dejaste caer tú? ¿Y si el verdadero dueño saca un segundo arma?</p>
+          <p class="fear-line">En este caos, el héroe y el sospechoso se ven exactamente igual. ¿Cómo te aseguras de que la policía te vea a TI como el bueno?</p>
+        </div>
+      </div>
+
+      <!-- S8 -->
+      <div class="scenario-card">
+        <img src="u1-s8.png" alt="Escenario 8: Empleada doméstica descubre tu arma" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Escenario 8: Tu empleada doméstica encuentra tu arma cargada en la mesita</h3>
+          <p>Llegas a casa. Tu empleada está pálida. Abrió el cajón de la mesita y encontró tu pistola cargada. Tiembla. Quiere renunciar. <strong>Amenaza con llamar a las autoridades.</strong></p>
+          <p>¿Eres legalmente responsable? ¿Podría demandarte? ¿Y tu seguro de hogar? Y — más importante — <strong>¿y si hubiera sido tu nieto?</strong></p>
+          <p class="fear-line">Las armas de fuego sin asegurar en el hogar causan más muertes accidentales que casi cualquier otro peligro doméstico. Este escenario te obliga a solucionar el problema.</p>
+        </div>
+      </div>
+
+      <!-- S9 -->
+      <div class="scenario-card">
+        <img src="u1-s9.png" alt="Escenario 9: Hijo adolescente sosteniendo tu arma" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Escenario 9: Entras y tu hijo adolescente tiene tu pistola</h3>
+          <p>Llegas temprano a casa. Tu hijo de 15 años está sentado en tu cama. Tu caja fuerte está abierta. Tiene tu pistola, mirándola fijamente. Te mira con culpa — y algo más. <strong>¿Miedo? ¿Curiosidad? ¿Algo más oscuro?</strong></p>
+          <p>¿Gritas? ¿Te mantienes tranquilo? ¿Le quitas el arma? ¿Solo tenía curiosidad — o era algo peor? ¿Cómo manejas esto sin destruir tu relación — o sin ignorar un grito de ayuda?</p>
+          <p class="fear-line">Todo padre piensa "no mi hijo." Este escenario te enseña qué hacer cuando SÍ es tu hijo.</p>
+        </div>
+      </div>
+
+      <!-- S10 -->
+      <div class="scenario-card">
+        <img src="u1-s10.png" alt="Escenario 10: Expulsado de tienda por portar" style="width:100%; height:auto; display:block;">
+        <div class="card-body">
+          <h3>Escenario 10: Te humillan y te expulsan de una tienda por portar</h3>
+          <p>Estás de compras con tu familia. Tu camisa se sube. Un gerente ve tu funda. Llaman a seguridad. Te escoltan afuera frente a todos — incluida tu esposa y tus hijos. Otros compradores te miran. <strong>Alguien está grabando.</strong></p>
+          <p>¿Tienes fundamentos legales para negarte? ¿Pueden prohibirte la entrada? ¿Y si el video se vuelve viral? ¿Qué le dices a tus hijos que acaban de ver a su papá ser tratado como criminal?</p>
+          <p class="fear-line">Cumpliste cada ley. No hiciste nada malo. Y aun así te humillaron. Este escenario te enseña exactamente cómo manejarlo — legal y emocionalmente.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">¡SÍ! QUIERO ESTAR LISTO PARA LOS 10 ESCENARIOS — $97</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Métodos de pago"></div>
+    </div>
+  </section>
+
+  <!-- CONSEQUENCES -->
+  <section class="navy">
+    <div class="inner" style="text-align:center;">
+      <img src="u1-consequences.png" alt="Las consecuencias: tribunal, familia destruida, esposas, aislamiento" style="width:100%; height:auto; display:block; border-radius:6px;">
+      <h2 style="margin-top:24px;">La respuesta equivocada no solo termina la situación.<br>Termina tu vida tal como la conoces.</h2>
+      <p style="font-size:19px;">Prisión. Demandas. Familias destruidas. Un permiso de portación oculta revocado. Una vida de "debí haberlo sabido." <strong style="color:#fff;">El costo de no estar preparado no se mide en dólares. Se mide en todo lo que has construido.</strong></p>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">PROTEGE TODO LO QUE HAS CONSTRUIDO — AGREGA UNTHINKABLE ($97)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods" style="filter:brightness(2);"></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section>
+    <div class="inner">
+      <h2>Titulares de permiso reales. Despertadores reales.</h2>
+      <p style="text-align:center; font-size:18px; margin-bottom:28px; color:#666;">Esto es lo que dicen portadores cotidianos después de completar UNTHINKABLE:</p>
+
+      <div class="testimonial-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:800px; margin:0 auto;">
+        <img src="u1-t-robert.png" alt="Testimonio — Robert Mitchell" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="u1-t-mark.png" alt="Testimonio — Mark Sullivan" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="u1-t-kevin.png" alt="Testimonio — Kevin Bradshaw" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="u1-t-james.png" alt="Testimonio — James Henderson" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="u1-t-david.png" alt="Testimonio — David Patterson" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="u1-t-michael.png" alt="Testimonio — Michael Torres" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="u1-t-steven.png" alt="Testimonio — Steven Garcia" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="u1-t-thomas.png" alt="Testimonio — Thomas Reed" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+      </div>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">YA VI SUFICIENTE — AGREGA UNTHINKABLE A MI PEDIDO ($97)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Métodos de pago"></div>
+    </div>
+  </section>
+
+  <!-- GUARANTEE -->
+  <section class="cream">
+    <div class="inner">
+      <div class="guarantee-box" style="text-align:left; max-width:700px;">
+        <h2 style="text-align:center; font-size:26px; color:var(--red); margin-bottom:4px;">👉 La mejor garantía de devolución de dinero de la industria 👈</h2>
+        <h3 style="text-align:center; font-size:20px; margin-bottom:16px;">¡Pruébalo durante 60 días completos para ver si es lo que necesitas!</h3>
+        <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+          <div style="flex:1; min-width:260px;">
+            <p>Mira, no quiero que sientas que estás tomando ningún "riesgo" o "chance" con esto. Quiero que estés <strong>totalmente seguro</strong> de que esto es exactamente lo que buscabas.</p>
+            <p>Algo que realmente te preparará para las situaciones que tu clase de permiso nunca cubrió. Por eso quiero darte 60 días completos para probarlo. Es decir, ni siquiera tienes que decir "Sí" hoy — solo di "Tal vez" — y <strong>prueba el entrenamiento completamente sin riesgo durante 60 días.</strong></p>
+          </div>
+          <div class="guarantee-badge-wrap" style="flex-shrink:0; text-align:center;"><img src="guarantee-badge.png" alt="Garantía de devolución de dinero de 60 días" style="width:160px;"></div>
+        </div>
+        <div style="background:var(--red); color:#fff; text-align:center; padding:10px 16px; border-radius:4px; margin:16px 0 12px; font:bold 20px/1.4 Arial;">Funciona — o es GRATIS 🙌</div>
+        <p>Entiendo que oportunidades como esta no llegan todos los días, y cuando llegan, usualmente hay una "trampa."</p>
+        <p>Así que no te culpo si crees que esta oferta es demasiado buena para ser verdad... Pero me complace decirte que con UNTHINKABLE...</p>
+        <p><strong style="font-size:19px;">No hay absolutamente NINGUNA trampa, NINGUNA obligación y CERO riesgo para ti.</strong></p>
+        <p><u>Prueba UNTHINKABLE durante 60 días completos — completamente sin riesgo.</u> Mira cada escenario. Practica cada protocolo. Pon a prueba tus decisiones.</p>
+        <p>Si por cualquier razón (o sin razón alguna) encuentras que esto no funciona exactamente como describí, solo envíanos un correo,</p>
+        <p>Y nos encargaremos personalmente de que te reembolsemos cada centavo de tu inversión — <strong style="text-decoration:underline; font-size:19px;">¡SIN PREGUNTAS!</strong></p>
+        <p><strong>Además — puedes conservar todo tu acceso como agradecimiento por haberlo probado.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="inner" style="max-width:700px;">
+      <h2>Preguntas frecuentes</h2>
+      <div class="faq-item">
+        <p class="faq-q">¿Cómo accedo al entrenamiento?</p>
+        <p class="faq-a">Al instante. En el momento en que se confirme tu pedido, recibirás un enlace de acceso. Empieza a ver en 60 segundos en cualquier dispositivo.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">¿Es una suscripción? ¿Me cobrarán de nuevo?</p>
+        <p class="faq-a"><strong>Absolutamente NO.</strong> Pago único de $97. Acceso de por vida. Sin cargos ocultos. Sin cobros mensuales. Nunca.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">¿Puedo verlo en mi celular?</p>
+        <p class="faq-a">Sí. Celular, tablet, laptop, computadora, smart TV — donde tengas internet.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Soy un portador experimentado. ¿Es muy básico para mí?</p>
+        <p class="faq-a">Esto <strong>NO</strong> es entrenamiento básico de armas. Un oficial de ley retirado con 22 años de servicio dijo que cubre escenarios en los que el 90% de los policías no se han entrenado. Si acaso, los portadores experimentados lo necesitan MÁS — porque tienden a confiar demasiado en la confianza en lugar de la preparación.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">¿Y si no estoy satisfecho?</p>
+        <p class="faq-a">Garantía de devolución de dinero de 60 días. Reembolso completo. Conservas el acceso. Cero riesgo para ti. El único riesgo es no tener este entrenamiento cuando lo necesites.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="gradient" style="padding:48px 0;">
+    <div class="inner" style="text-align:center;">
+      <h2 style="font-size:30px;">Los escenarios son reales. Tu brecha de entrenamiento se nota. Ciérrala ahora.</h2>
+      <img src="u1-mockup.png" alt="UNTHINKABLE — Sistema de entrenamiento completo" style="max-width:500px; width:100%; height:auto; display:block; margin:0 auto;">
+    </div>
+    <div class="cta-wrap">
+      <div class="price-block">
+        <div class="price-old" style="color:#aaa;">$497</div>
+        <div class="price-new">$97 HOY</div>
+        <div style="font:15px/1.4 Arial; color:var(--cream);">Pago único | Acceso instantáneo | Garantía de 60 días</div>
+      </div>
+      <a class="cta-btn" href="#">ÚLTIMA OPORTUNIDAD — OBTÉN UNTHINKABLE POR SOLO $97 ANTES DE QUE DESAPAREZCA</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Métodos de pago" style="filter:brightness(2);max-width:340px;"></div>
+      <a class="shame light" href="#">No gracias, <strong>seguiré portando sin prepararme para lo que podría pasar. Estoy seguro de que estará bien.</strong></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Certified Concealed. Todos los derechos reservados.<br>Solo fines educativos. No constituye asesoría legal.<br>Política de Privacidad | Términos | Contacto</p>
+  </footer>
+
+</div>
+
+<!-- EXIT POPUP -->
+<div class="exit-overlay" id="exitPopup">
+  <div class="exit-popup">
+    <span class="close-x" id="exitClose">✕</span>
+    <div class="ep-header">
+      <span class="ep-wait">¡ESPERA!</span>
+      <span class="ep-title">Antes de irte... tu <em>descuento exclusivo</em> desaparece para siempre</span>
+    </div>
+    <div class="ep-body">
+      <div class="ep-row">
+        <img src="u1-mockup.png" alt="UNTHINKABLE" style="width:120px; height:auto; flex-shrink:0; border-radius:6px;">
+        <div>
+          <h4 style="color:var(--navy);">UNTHINKABLE: 10 escenarios que podrían salvar a tu familia</h4>
+          <ul class="ep-bullets">
+            <li>10 escenarios defensivos del mundo real</li>
+            <li>Árboles de decisión legal para cada uno</li>
+            <li>Entrenamiento de control emocional</li>
+            <li>Acceso instantáneo en cualquier dispositivo</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font:bold 16px/1.4 Arial; color:var(--red); text-align:center;">⚠️ Este precio de $97 desaparece cuando sales de esta página.</p>
+      <button class="ep-cta" id="exitAccept">¡SÍ! AGREGA UNTHINKABLE A MI PEDIDO — $97</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// 10-minute countdown timer with milliseconds
+(function(){
+  var totalMs = 600000; // 10 minutes in ms
+  var minEl = document.getElementById('cd-min');
+  var secEl = document.getElementById('cd-sec');
+  var msEl = document.getElementById('cd-ms');
+  var last = Date.now();
+  function update(){
+    var now = Date.now();
+    totalMs -= (now - last);
+    last = now;
+    if(totalMs <= 0){ totalMs=0; minEl.textContent='00'; secEl.textContent='00'; msEl.textContent='00'; return; }
+    var m = Math.floor(totalMs/60000);
+    var s = Math.floor((totalMs%60000)/1000);
+    var cs = Math.floor((totalMs%1000)/10);
+    minEl.textContent = (m<10?'0':'')+m;
+    secEl.textContent = (s<10?'0':'')+s;
+    msEl.textContent = (cs<10?'0':'')+cs;
+    requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+})();
+
+// Exit-intent — re-shows every time with 3s cooldown
+(function(){
+  var cooldown = false;
+  var popup = document.getElementById('exitPopup');
+  function closePopup(){ popup.style.display='none'; cooldown=true; setTimeout(function(){ cooldown=false; }, 3000); }
+  document.getElementById('exitClose').addEventListener('click', closePopup);
+  document.getElementById('exitAccept').addEventListener('click', closePopup);
+  document.addEventListener('mouseout', function(e){
+    if(!cooldown && e.clientY < 5 && popup.style.display !== 'flex'){
+      popup.style.display = 'flex';
+    }
+  });
+})();
+</script>
+</body>
+</html>

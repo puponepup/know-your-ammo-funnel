@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIREFRAME — Upsell 3: HER SHIELD ($37) — Español</title>
+<style>
+  :root {
+    --navy: #1a1a2e;
+    --red: #cc0000;
+    --red-dark: #a30000;
+    --green: #28a745;
+    --green-dark: #1e7e34;
+    --cream: #f5f0e0;
+    --light-cream: #f8f7f5;
+    --white: #ffffff;
+    --star: #f5c518;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#e8e8e8; font-family: Georgia, 'Times New Roman', serif; color:var(--navy); -webkit-font-smoothing:antialiased; }
+
+  /* PAGE WRAPPER — wider, more flush with edges */
+  .page { max-width:960px; margin:0 auto; background:var(--white); box-shadow:0 0 30px rgba(0,0,0,.08); }
+
+  /* INNER CONTAINERS */
+  .inner { max-width:760px; margin:0 auto; padding:0 20px; }
+  .inner-narrow { max-width:600px; margin:0 auto; padding:0 20px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { display:flex; border-radius:4px; overflow:hidden; margin:10px 20px; border:1px solid #ccc; }
+  .step { flex:1; text-align:center; font:bold 13px Arial, sans-serif; text-transform:uppercase; letter-spacing:.3px; color:#888; background:#f8f8f8; border-right:1px solid #ccc; padding:14px 10px; line-height:1.4; }
+  .step:last-child { border-right:none; }
+  .step.active { background:#4CAF50; color:#fff; }
+
+  /* WARNING / ORDER STATUS */
+  .order-status { text-align:center; padding:18px 20px 5px; background:var(--white); }
+  .order-status h3 { font-size:29px; color:var(--green); margin-bottom:4px; font-family:Arial,sans-serif; }
+  .order-status .sub { font-size:16px; color:var(--navy); margin-bottom:8px; }
+  .order-status .dc { font-size:13px; color:var(--red); font-style:italic; font-family:Arial,sans-serif; }
+
+  /* SECTIONS */
+  section { padding:48px 0; }
+  section.tight { padding:5px 0; }
+  section.cream { background:var(--light-cream); }
+  section.navy { background:var(--navy); }
+  section.navy, section.navy * { color:var(--cream); }
+  section.navy h2, section.navy h3 { color:#fff; }
+  section.gradient { background:linear-gradient(180deg, var(--navy) 0%, #0a0a15 100%); }
+  section.gradient, section.gradient * { color:var(--cream); }
+  section.gradient h2 { color:#fff; }
+
+  /* TYPOGRAPHY — 50+ optimized */
+  .pre-head { font:bold 14px/1.4 Arial, sans-serif; text-transform:uppercase; color:var(--red); letter-spacing:3px; text-align:center; margin-bottom:14px; }
+  h1 { font-size:36px; line-height:1.25; font-weight:bold; text-align:center; margin-bottom:18px; }
+  h2 { font-size:28px; line-height:1.3; font-weight:bold; text-align:center; margin-bottom:20px; }
+  h3 { font-size:22px; font-weight:bold; margin-bottom:10px; }
+  p { font-size:18px; line-height:1.75; margin-bottom:14px; }
+  .subhead { font-size:20px; line-height:1.65; text-align:center; margin-bottom:24px; }
+  .hero-subhead-mobile-show { display:none; }
+  .bold-highlight { font-weight:bold; color:var(--red); }
+  .accent { color:var(--red); }
+
+  /* VIDEO PLACEHOLDER */
+  .video-placeholder { background:#111; border-radius:8px; max-width:100%; margin:20px auto; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; aspect-ratio:16/9; }
+  .video-placeholder .play { width:64px; height:64px; border-radius:50%; background:rgba(204,0,0,.85); display:flex; align-items:center; justify-content:center; }
+  .video-placeholder .play::after { content:''; border-left:20px solid #fff; border-top:12px solid transparent; border-bottom:12px solid transparent; margin-left:5px; }
+  .video-placeholder p { color:#888; font:13px/1.4 Arial; }
+  .video-note { text-align:center; font:bold 14px/1.4 Arial; color:var(--red); margin-bottom:4px; }
+
+  /* IMAGE PLACEHOLDER */
+  .img-placeholder { background:#e8e4db; border:2px dashed #aaa; border-radius:8px; display:flex; align-items:center; justify-content:center; text-align:center; padding:24px 16px; margin:20px auto; color:#777; font:italic 13px/1.5 Arial, sans-serif; position:relative; }
+  .img-placeholder .prompt-num { position:absolute; top:6px; left:10px; background:var(--navy); color:#fff; font:bold 10px/20px Arial; padding:0 7px; border-radius:3px; }
+
+  /* PRODUCT MOCKUP — full width, stacked */
+  .mockup-section { text-align:center; }
+  .mockup-section .img-placeholder { max-width:700px; min-height:320px; }
+  .mockup-section .tag { font:bold 13px/1.4 Arial; text-transform:uppercase; color:var(--red); letter-spacing:2px; margin-bottom:10px; }
+  .mockup-section h2 { margin-top:16px; }
+
+  /* CTA BUTTON */
+  .cta-wrap { max-width:560px; margin:0 auto; padding:10px 20px; }
+  .cta-btn { display:block; width:100%; padding:18px 20px; background:linear-gradient(180deg, var(--green) 0%, var(--green-dark) 100%); border:none; border-radius:8px; color:#fff; font:bold 18px/1.3 Arial, sans-serif; text-align:center; text-transform:uppercase; cursor:pointer; box-shadow:0 4px 16px rgba(40,167,69,.3); text-decoration:none; animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{box-shadow:0 4px 16px rgba(40,167,69,.3)} 50%{box-shadow:0 4px 28px rgba(40,167,69,.55)} }
+  .cta-sub { text-align:center; margin-top:10px; }
+  .cta-sub img { max-width:380px; width:100%; height:auto; }
+  .shame { display:block; text-align:center; font:italic 15px/1.5 Georgia; color:#666; margin-top:18px; text-decoration:underline; cursor:pointer; }
+  .shame.light { color:rgba(245,240,224,.6); }
+  .shame strong { font-weight:bold; }
+
+  /* PRICE */
+  .price-block { text-align:center; margin:16px auto; }
+  .price-old { font:20px/1.4 Arial; text-decoration:line-through; color:#888; }
+  .price-new { font:bold 44px/1.2 Arial; color:var(--green); margin:6px 0; }
+  .price-note { font:15px/1.4 Arial; color:var(--navy); }
+
+  /* COUNTDOWN */
+  .countdown { display:flex; justify-content:center; gap:8px; margin:16px auto; align-items:center; }
+  .countdown .digit { background:var(--red); color:#fff; font:bold 28px/50px Arial; width:60px; text-align:center; border-radius:6px; }
+  .countdown .digit.ms { font-size:28px; width:60px; line-height:50px; background:var(--red); }
+  .countdown .sep { font:bold 28px/50px Arial; color:var(--red); }
+
+  /* TRUST BAR */
+  .trust-bar { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; margin:20px auto; }
+  .trust-item { text-align:center; font:bold 14px/1.4 Arial; color:var(--navy); }
+  .trust-item .icon { font-size:36px; display:block; margin-bottom:4px; }
+
+  /* FEATURE LIST */
+  .features { list-style:none; padding:0; margin:16px 0; text-align:left; }
+  .features li { font-size:18px; line-height:1.55; padding:5px 0 5px 30px; position:relative; }
+  .features li::before { content:'✅'; position:absolute; left:0; top:5px; }
+
+  /* BULLET LIST */
+  .bullets { list-style:none; padding:0; margin:14px 0; }
+  .bullets li { font:bold 18px/1.55 Georgia; padding:6px 0 6px 22px; position:relative; }
+  .bullets li::before { content:'•'; position:absolute; left:0; font-size:22px; color:var(--red); }
+
+  /* CHAPTER CARD */
+  .chapter-card { background:#fff; border-radius:10px; box-shadow:0 2px 12px rgba(0,0,0,.07); margin-bottom:32px; overflow:hidden; }
+  .chapter-card .img-placeholder { border-radius:0; margin:0; min-height:180px; }
+  .chapter-card .card-body { padding:20px 24px; }
+  .chapter-card h3 { color:var(--navy); font-size:21px; }
+  .chapter-card.bonus { border:2px solid var(--navy); }
+
+  /* TESTIMONIAL */
+  .testimonial { background:#fff; border-left:4px solid var(--navy); border-radius:0 8px 8px 0; padding:20px 22px; margin-bottom:20px; box-shadow:0 1px 6px rgba(0,0,0,.05); display:flex; gap:16px; align-items:flex-start; }
+  .testimonial .avatar { width:56px; height:56px; border-radius:50%; background:#ddd; flex-shrink:0; display:flex; align-items:center; justify-content:center; font:bold 20px Arial; color:#999; overflow:hidden; }
+  .testimonial .t-content { flex:1; }
+  .stars { color:var(--star); font-size:18px; letter-spacing:1px; }
+  .t-name { font:bold 15px/1.4 Arial; color:var(--navy); }
+  .t-rating { font:bold 12px/1.4 Arial; color:var(--navy); margin-left:8px; }
+  .testimonial blockquote { font:italic 17px/1.65 Georgia; margin:6px 0 8px; }
+
+  /* GUARANTEE */
+  .guarantee-box { background:#fdfbf5; border:2px solid var(--navy); border-radius:12px; padding:32px 24px; text-align:center; max-width:600px; margin:0 auto; }
+  .guarantee-box img { width:140px; height:auto; margin-bottom:16px; }
+
+  /* FAQ */
+  .faq-item { border-bottom:1px solid #e0e0e0; padding:16px 0; }
+  .faq-item:last-child { border:none; }
+  .faq-q { font:bold 19px/1.4 Georgia; color:var(--navy); }
+  .faq-a { font:17px/1.75 Georgia; color:#444; margin-top:8px; }
+
+  /* FOOTER */
+  footer { background:#111; padding:24px 20px; text-align:center; }
+  footer p { font:13px/1.6 Arial; color:#aaa; margin:0; }
+
+  /* EXIT POPUP */
+  .exit-overlay { display:none; position:fixed; top:0;left:0;right:0;bottom:0; background:rgba(0,0,0,.7); z-index:9998; align-items:center; justify-content:center; }
+  .exit-popup { background:#fff; border:4px solid #333; border-radius:10px; max-width:480px; width:90%; margin:auto; position:relative; overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,.5); }
+  .exit-popup .close-x { position:absolute; top:10px; right:14px; font:bold 22px/1 Arial; color:#999; cursor:pointer; z-index:2; }
+  .exit-popup .ep-header { background:#000; padding:14px 20px; display:flex; align-items:center; gap:14px; }
+  .exit-popup .ep-wait { background:var(--red); color:#fff; font:bold 22px/1.2 Arial; padding:8px 14px; display:inline-block; }
+  .exit-popup .ep-title { color:#fff; font:bold 16px/1.3 Georgia; }
+  .exit-popup .ep-title em { color:var(--red); font-style:italic; }
+  .exit-popup .ep-body { padding:20px 24px; }
+  .exit-popup .ep-body .ep-row { display:flex; gap:16px; margin-bottom:16px; align-items:flex-start; }
+  .exit-popup .ep-body .ep-img { width:120px; height:100px; background:#e8e4db; border:1px dashed #aaa; border-radius:6px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font:italic 11px Arial; color:#888; text-align:center; }
+  .exit-popup .ep-body h4 { font:bold 15px/1.4 Georgia; margin-bottom:6px; }
+  .exit-popup .ep-bullets { list-style:none; padding:0; }
+  .exit-popup .ep-bullets li { font:16px/1.5 Georgia; padding:3px 0 3px 24px; position:relative; }
+  .exit-popup .ep-bullets li::before { content:'✅'; position:absolute; left:0; }
+  .exit-popup .ep-cta { display:block; width:100%; padding:16px; background:var(--green); border:none; border-radius:6px; color:#fff; font:bold 16px/1.3 Arial; text-align:center; cursor:pointer; margin-bottom:10px; text-transform:uppercase; }
+
+  /* MOBILE RESPONSIVE */
+  @media(max-width:700px) {
+    h1 { font-size:22px; margin-bottom:8px; margin-top:8px; }
+    h2 { font-size:22px; }
+    h3 { font-size:19px; }
+    p, .features li, .bullets li { font-size:16px; }
+    .subhead { font-size:16px; line-height:1.5; margin-bottom:12px; }
+    section { padding:24px 0; }
+    section.tight { padding:10px 0; }
+    .video-placeholder { aspect-ratio:4/5; border-radius:0; }
+    .cta-btn { font-size:16px; padding:16px; }
+    .price-new { font-size:36px; }
+    .countdown .digit { width:48px; font-size:22px; line-height:42px; }
+    .countdown .digit.ms { width:48px; font-size:22px; }
+    .countdown .sep { font-size:22px; line-height:42px; }
+    .testimonial { flex-direction:column; gap:10px; }
+    .testimonial .avatar { width:48px; height:48px; }
+    .testimonial-grid { grid-template-columns:1fr !important; max-width:400px !important; }
+    .chapter-card .img-placeholder { min-height:140px; }
+    .trust-bar { gap:16px; }
+    .trust-item { font-size:12px; }
+    .trust-item .icon { font-size:28px; }
+    .exit-popup .ep-body .ep-row { flex-direction:column; }
+    .exit-popup .ep-body .ep-img { width:100%; height:80px; }
+    /* Mobile hero — minimal, clean */
+    .pre-head { display:none; }
+    .order-status { padding:8px 16px 6px; }
+    .order-status h3 { font-size:20px; margin-bottom:0; }
+    .order-status .sub-extra { display:none; }
+    .order-status .dc { display:none; }
+    .video-note { font-size:12px; margin-bottom:6px; }
+    .hero-subhead-mobile-hide { display:none; }
+    .hero-subhead-mobile-show { display:block; }
+    .headline-mobile-hide { display:none; }
+    /* Guarantee badge centered on mobile */
+    .guarantee-badge-wrap { width:100%; }
+    /* Mobile progress bar */
+    .progress-bar { margin:6px 8px; border-radius:3px; }
+    .step { font-size:10px; padding:8px 4px; letter-spacing:0; line-height:1.4; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar">
+    <div class="step">Paso 1: Completa tu pedido</div>
+    <div class="step active">Paso 2: Personaliza tu pedido</div>
+    <div class="step">Paso 3: Pedido completado</div>
+  </div>
+
+  <!-- ORDER STATUS -->
+  <div class="order-status">
+    <h3>¡Tu plan de protección está creciendo!</h3>
+    <p class="sub">Ahora calificas para esta <strong>actualización única</strong> <span class="sub-extra">que fortalecerá la protección de tu familia</span></p>
+    <p class="dc">Para evitar cargos duplicados, NO presiones 'Atrás', recargues ni cierres esta página</p>
+  </div>
+
+  <!-- SECTION: HEADLINE + VIDEO -->
+  <section class="tight">
+    <div class="inner">
+      <p class="pre-head">Complemento especial para la protección de tu familia</p>
+      <h1>La mayoría del entrenamiento de portación oculta está hecho por hombres, para hombres. <span class="headline-mobile-hide">Esto no es así. </span>Ya seas una mujer que porta o un hombre comprando esto para ella — <span class="headline-mobile-hide">aprende a portar con niños, ocultar sin cinturón y </span><span style="background:#fff700; padding:2px 8px;">defenderte en las situaciones que los hombres nunca consideran.</span></h1>
+      <p class="subhead hero-subhead-mobile-hide">1 de cada 3 mujeres enfrentará un ataque violento. Ella carga las compras. Recoge a los niños. Va al supermercado a las 9 PM. <strong class="accent">No puedes estar ahí cada vez.</strong> Dale la misma confianza que acabas de ganar.</p>
+      <p class="video-note">🔊 Asegúrate de tener el sonido encendido.</p>
+      <div class="video-placeholder">
+        <div class="play"></div>
+        <p>VSL VIDEO — HER SHIELD</p>
+      </div>
+      <p class="subhead hero-subhead-mobile-show">1 de cada 3 mujeres enfrentará un ataque violento. Ella carga las compras. Recoge a los niños. Va al supermercado a las 9 PM. <strong class="accent">No puedes estar ahí cada vez.</strong> Dale la misma confianza que acabas de ganar.</p>
+    </div>
+  </section>
+
+  <!-- SECTION: PRODUCT MOCKUP + FIRST CTA (stacked: headline → mockup → text) -->
+  <section class="tight">
+    <div class="inner mockup-section">
+      <p class="tag">Curso en video completo para ella</p>
+      <h2>HER SHIELD: Confianza en portación oculta para mujeres</h2>
+      <img src="assets/hershield-mockup.png" alt="HER SHIELD: Confianza en portación oculta para mujeres - Paquete de curso completo" style="width:100%; max-width:700px; height:auto; display:block; margin:0 auto;">
+      <p style="text-align:center; font-size:18px; margin-top:12px;">Esto no es una "versión para mujeres" del entrenamiento básico. Creado por mujeres, para mujeres. Selección de arma para <em>sus</em> manos. Ocultamiento en ropa de mujer. Portar con niños. Amenazas que los hombres no consideran. <strong>Ella merece la misma protección que tú portas cada día.</strong></p>
+      <div style="display:flex; justify-content:center;">
+        <ul class="features" style="max-width:520px;">
+          <li>7 capítulos en video — hechos para mujeres</li>
+          <li>Ocultamiento en ropa de mujer</li>
+          <li>Portar con niños y familia</li>
+          <li>Conciencia situacional para mujeres</li>
+          <li>Realidad legal y emocional después del uso</li>
+          <li>Bono: Portar en pareja</li>
+          <li>Acceso instantáneo — ella empieza esta noche</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cta-wrap">
+      <div class="countdown" id="countdown1">
+        <div class="digit" id="cd-min">10</div><div class="sep">:</div>
+        <div class="digit" id="cd-sec">00</div><div class="sep">.</div>
+        <div class="digit ms" id="cd-ms">00</div>
+      </div>
+      <div class="price-block">
+        <div class="price-old">Precio regular: $197</div>
+        <div class="price-new">$37 Solo hoy</div>
+        <div class="price-note">Pago único — Sin suscripción — Acceso instantáneo</div>
+      </div>
+      <a class="cta-btn" href="#">¡SÍ! DALE LA CONFIANZA QUE MERECE — $37</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Métodos de pago"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: THE FEAR — MALE PROTECTOR ANGLE -->
+  <section class="navy tight">
+    <div class="inner">
+      <img src="assets/fear-parking-garage.png" alt="Mujer sola en estacionamiento de noche" style="width:100%; max-width:680px; height:auto; display:block; margin:0 auto; border-radius:8px;">
+      <h2>Ahora mismo, ella no está lista.</h2>
+      <p style="font-size:19px; text-align:center;">Piensa en la última vez que caminó sola a su auto de noche.</p>
+      <p style="font-size:19px; text-align:center;">El estacionamiento después del trabajo. La ida al supermercado a las 9 PM cuando la tienda estaba casi vacía. El trote antes del amanecer cuando las calles aún estaban oscuras.</p>
+      <p style="font-size:19px; text-align:center;">¿Sabe qué hacer si alguien la sigue? ¿La agarra del brazo? ¿La obliga a entrar a su auto? <strong style="color:#fff;">Tú portas un arma. Te entrenaste. Ella no.</strong></p>
+      <p style="font-size:19px; text-align:center; color:#fff;"><strong>Y no puedes estar con ella cada segundo de cada día.</strong> El viaje de negocios. El turno nocturno. El mandado que no pudiste hacer porque estabas atrapado en la oficina. <span class="accent">Hay momentos en que ella está sola. Sin protección. Y tú no estás ahí.</span></p>
+      <img src="assets/crime-stats.png" alt="1 de cada 3 mujeres experimentará violencia en su vida - Estadísticas de crimen" style="width:100%; max-width:680px; height:auto; display:block; margin:0 auto; border-radius:8px;">
+      <p style="font-size:19px; text-align:center; margin-top:20px;">Estos no son escenarios de peor caso. Son certezas estadísticas. Cada 68 segundos, alguien es agredido. <strong style="color:#fff;">Her Shield le da a la mujer en tu vida la misma confianza táctica que acabas de ganar — para que cuando tú no estés, ella sí lo esté.</strong></p>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">¡SÍ! NO LA DEJARÉ SIN PROTECCIÓN — AGREGA HER SHIELD ($37)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods" style="filter:brightness(2);"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: WHAT'S INSIDE — 7 CHAPTERS + BONUS -->
+  <section class="cream">
+    <div class="inner">
+      <h2>Qué incluye: 7 capítulos + 1 bono — Hecho para la mujer en tu vida</h2>
+      <p style="text-align:center; font-size:18px; margin-bottom:32px;">Todo lo que necesita para protegerse — selección de arma, ocultamiento para su vestuario, portar con niños, conciencia situacional para amenazas que los hombres rara vez ven, y la realidad legal y emocional después. <strong class="accent">Tú obtuviste tu entrenamiento. Ella merece el suyo.</strong></p>
+
+      <!-- Chapter 1 -->
+      <div class="chapter-card">
+        <img src="assets/chapter1.png" alt="Chapter 1: Woman at outdoor shooting range" style="width:100%; height:auto; display:block; border-radius:10px 10px 0 0;">
+        <div class="card-body">
+          <h3>Capítulo 1: Por qué las mujeres portan — La protectora empoderada</h3>
+          <p>No porta porque tiene miedo. Porta porque se niega a estar indefensa. Este capítulo construye la base mental que toda mujer armada necesita.</p>
+        </div>
+      </div>
+
+      <!-- Chapter 2 -->
+      <div class="chapter-card">
+        <img src="assets/chapter2.png" alt="Chapter 2: Woman choosing the right firearm" style="width:100%; height:auto; display:block; border-radius:10px 10px 0 0;">
+        <div class="card-body">
+          <h3>Capítulo 2: Elegir un arma que le quede bien a ELLA</h3>
+          <p>El 80% de las mujeres portan armas recomendadas por hombres, para hombres. Empuñadura incorrecta. Peso incorrecto. Retroceso incorrecto. Esto cubre lo que las mujeres realmente disparan bien.</p>
+        </div>
+      </div>
+
+      <!-- Chapter 3 -->
+      <div class="chapter-card">
+        <img src="assets/chapter3.png" alt="Chapter 3: Concealment options for women" style="width:100%; height:auto; display:block; border-radius:10px 10px 0 0;">
+        <div class="card-body">
+          <h3>Capítulo 3: Ocultamiento — Estilo y seguridad</h3>
+          <p>Los hombres se ponen una camisa holgada. Ella no puede. Vestidos, pants de yoga, blazers, ropa de verano. Cada tipo de cuerpo. Cada temporada. Sin marcar.</p>
+        </div>
+      </div>
+
+      <!-- Chapter 4 -->
+      <div class="chapter-card">
+        <img src="assets/chapter4.png" alt="Chapter 4: Mother carrying while managing children" style="width:100%; height:auto; display:block; border-radius:10px 10px 0 0;">
+        <div class="card-body">
+          <h3>Capítulo 4: Portar con niños y caos</h3>
+          <p>Sus manos nunca están libres. Bebé, carriola, compras, niño corriendo. Cómo acceder a su arma si es necesario. Cómo asegurar que los niños NUNCA accedan a ella.</p>
+        </div>
+      </div>
+
+      <!-- Chapter 5 -->
+      <div class="chapter-card">
+        <img src="assets/chapter5.png" alt="Chapter 5: Situational awareness for women" style="width:100%; height:auto; display:block; border-radius:10px 10px 0 0;">
+        <div class="card-body">
+          <h3>Capítulo 5: Conciencia situacional — Amenazas que los hombres no ven</h3>
+          <p>El extraño "servicial." El auto que sigue por tres vueltas. El hombre que sostiene la puerta del elevador demasiado tiempo. Reconocimiento de amenazas específicas para mujeres.</p>
+        </div>
+      </div>
+
+      <!-- Chapter 6 -->
+      <div class="chapter-card">
+        <img src="assets/chapter6.png" alt="Chapter 6: Legal and emotional aftermath" style="width:100%; height:auto; display:block; border-radius:10px 10px 0 0;">
+        <div class="card-body">
+          <h3>Capítulo 6: La realidad legal y emocional después</h3>
+          <p>La bala saliendo del cañón es solo el comienzo. Interrogatorio policial. Proceso legal. Secuelas emocionales. TEPT. Juicios de otros. Necesita estar lista para TODO eso.</p>
+        </div>
+      </div>
+
+      <!-- Chapter 7 -->
+      <div class="chapter-card">
+        <img src="assets/chapter7.png" alt="Chapter 7: Practice drills and training" style="width:100%; height:auto; display:block; border-radius:10px 10px 0 0;">
+        <div class="card-body">
+          <h3>Capítulo 7: Practica como protegerás</h3>
+          <p>Rutinas de disparo en seco en casa. Ejercicios de polígono para defensa. Tiempo de desenfundar y disparar. Esto la convierte de "dueña de arma" en "alguien a quien no quieres amenazar."</p>
+        </div>
+      </div>
+
+      <!-- BONUS -->
+      <div class="chapter-card bonus">
+        <img src="assets/bonus-chapter.png" alt="BONUS: Couple training together at the range" style="width:100%; height:auto; display:block; border-radius:10px 10px 0 0;">
+        <div class="card-body">
+          <h3>BONO: Portar en pareja</h3>
+          <p>Protocolos de comunicación. Quién lidera en una amenaza. Evitar fuego cruzado. Hablar de portar con la familia. Dos portadores se convierten en una unidad defensiva coordinada.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">¡SÍ! DALE EL ENTRENAMIENTO COMPLETO DE 7 CAPÍTULOS ($37)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: BECAUSE YOU WON'T ALWAYS BE THERE -->
+  <section class="navy tight">
+    <div class="inner" style="text-align:center;">
+      <img src="assets/emotional-banner.png" alt="Escena dividida: Hombre viajando mientras mujer está sola en casa" style="width:100%; max-width:1000px; height:auto; display:block; margin:0 auto; border-radius:8px;">
+      <h2 style="margin-top:24px;">No puedes estar ahí cada vez. Pero su entrenamiento sí puede.</h2>
+      <p style="font-size:19px;">El viaje de negocios. El turno nocturno. La ida al supermercado a las 9 PM cuando aún estás en la oficina.</p>
+      <p style="font-size:19px;">Cada día hay momentos en que ella está sola. Sin protección. Y tú estás a cientos de kilómetros — o en la otra punta de la ciudad, pero inútil para ella en ese instante.</p>
+      <p style="font-size:19px; color:#fff;"><strong>Por $37 — menos que una caja de munición de polígono — nunca más estará realmente sin protección.</strong> <span class="accent">Ese es el precio de saber que hiciste todo lo que pudiste.</span></p>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">PROTÉGELA CUANDO NO ESTÉS — $37</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods" style="filter:brightness(2);"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: TESTIMONIALS (from men who bought for wives) -->
+  <section class="tight">
+    <div class="inner">
+      <h2>Lo que dicen tipos como tú</h2>
+      <p style="text-align:center; font-size:18px; margin-bottom:28px;">Hombres que compraron Her Shield para las mujeres en sus vidas.</p>
+
+      <div class="testimonial-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:800px; margin:0 auto;">
+        <img src="assets/t-alan.png" alt="Testimonial — Alan Rodriguez" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="assets/t-dennis.png" alt="Testimonial — Dennis Walsh" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="assets/t-carl.png" alt="Testimonial — Carl Bennett" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="assets/t-frank.png" alt="Testimonial — Frank Morrison" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="assets/t-gerald.png" alt="Testimonial — Gerald Phillips" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="assets/t-leonard.png" alt="Testimonial — Leonard Jackson" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="assets/t-raymond.png" alt="Testimonial — Raymond Foster" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+        <img src="assets/t-victor.png" alt="Testimonial — Victor Chen" style="width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12);">
+      </div>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">OTROS HOMBRES ESCOGIERON PROTEGER A SUS ESPOSAS — YO TAMBIÉN ($37)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: GUARANTEE -->
+  <section class="cream tight">
+    <div class="inner">
+      <div class="guarantee-box" style="text-align:left; max-width:700px;">
+        <h2 style="text-align:center; font-size:26px; color:var(--red); margin-bottom:4px;">👉 La mejor garantía de devolución de dinero de la industria 👈</h2>
+        <h3 style="text-align:center; font-size:20px; margin-bottom:16px;">¡Pruébalo durante 60 días completos para ver si es lo que ella necesita!</h3>
+        <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+          <div style="flex:1; min-width:260px;">
+            <p>Mira, no quiero que sientas que estás tomando ningún "riesgo" con esto. Quiero que estés <strong>totalmente seguro</strong> de que esto es exactamente lo que la mujer en tu vida necesita.</p>
+            <p>Algo que genuinamente le dará la confianza y habilidades para protegerse cuando tú no puedas estar ahí. Por eso quiero darte 60 días completos para probarlo. Solo di "Tal vez" — y <strong>prueba el entrenamiento completamente sin riesgo durante 60 días.</strong></p>
+          </div>
+          <div class="guarantee-badge-wrap" style="flex-shrink:0; text-align:center;"><img src="guarantee-badge.png" alt="Garantía de devolución de dinero de 60 días" style="width:160px;"></div>
+        </div>
+        <div style="background:var(--red); color:#fff; text-align:center; padding:10px 16px; border-radius:4px; margin:16px 0 12px; font:bold 20px/1.4 Arial;">Te lo agradecerá — o es GRATIS 🙌</div>
+        <p>Entiendo que podrías ser escéptico. Ya invertiste en tu propio entrenamiento hoy.</p>
+        <p>Así que no te culpo si dudas... Pero me complace decirte que con Her Shield...</p>
+        <p><strong style="font-size:19px;">No hay absolutamente NINGUNA trampa, NINGUNA obligación y CERO riesgo para ti.</strong></p>
+        <p><u>Prueba Her Shield durante 60 días completos — completamente sin riesgo.</u> Déjala ver cada capítulo. Déjala practicar. Déjala construir su confianza.</p>
+        <p>Si no se siente más segura y más preparada en 60 días, solo envíanos un correo,</p>
+        <p>Y nos encargaremos personalmente de que te reembolsemos cada centavo — <strong style="text-decoration:underline; font-size:19px;">¡SIN PREGUNTAS!</strong></p>
+        <p><strong>Además — ella conserva todo su acceso como agradecimiento por haberlo probado.</strong></p>
+      </div>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">ESTOY PROTEGIDO POR LA GARANTÍA DE 60 DÍAS — AGREGA HER SHIELD ($37)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: FAQ -->
+  <section class="tight">
+    <div class="inner" style="max-width:700px;">
+      <h2>Preguntas frecuentes</h2>
+      <div class="faq-item">
+        <p class="faq-q">¿Es para mujeres que ya portan?</p>
+        <p class="faq-a">Todas las mujeres — curiosas, nuevas con permiso, experimentadas. Cada capítulo agrega valor.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">¿Y si le dan nervios las armas?</p>
+        <p class="faq-a">Perfecto. Diseñado para encontrarlas donde están. Empoderador, no intimidante.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">¿Podemos verlo juntos?</p>
+        <p class="faq-a">Absolutamente. El capítulo bono está diseñado para parejas.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">¿Es un curso de "armas rosas"?</p>
+        <p class="faq-a">Lo opuesto. Cero condescendencia. Hecho por mujeres que portan.</p>
+      </div>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta-btn" href="#">¡SÍ! AGREGA HER SHIELD POR SOLO $37</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Payment methods"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: FINAL CTA -->
+  <section class="gradient" style="padding:48px 0;">
+    <div class="inner" style="text-align:center;">
+      <h2 style="font-size:30px;">Ella merece la misma protección que acabas de darte a ti mismo.</h2>
+      <img src="assets/hershield-mockup.png" alt="HER SHIELD Product Mockup" style="width:100%; max-width:500px; height:auto; display:block; margin:0 auto; border-radius:8px;">
+    </div>
+    <div class="cta-wrap">
+      <div class="price-block">
+        <div class="price-old" style="color:#aaa;">$197</div>
+        <div class="price-new">$37 HOY</div>
+        <div style="font:15px/1.4 Arial; color:var(--cream);">Pago único | Acceso instantáneo | Garantía de 60 días</div>
+      </div>
+      <a class="cta-btn" href="#">ÚLTIMA OPORTUNIDAD — DALE EL ENTRENAMIENTO QUE NECESITA ($37)</a>
+      <div class="cta-sub"><img src="payment-badges.png" alt="Métodos de pago" style="filter:brightness(2);max-width:380px;"></div>
+      <a class="shame light" href="#">No gracias, <strong>estoy seguro de que estará bien sin ningún entrenamiento.</strong></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Certified Concealed. Todos los derechos reservados.<br>Solo fines educativos. No constituye asesoría legal.<br>Política de Privacidad | Términos | Contacto</p>
+  </footer>
+
+</div>
+
+<!-- EXIT POPUP -->
+<div class="exit-overlay" id="exitPopup">
+  <div class="exit-popup">
+    <span class="close-x" id="exitClose">✕</span>
+    <div class="ep-header">
+      <span class="ep-wait">¡ESPERA!</span>
+      <span class="ep-title">Antes de irte... <em>su protección</em> desaparece para siempre</span>
+    </div>
+    <div class="ep-body">
+      <div class="ep-row">
+        <img src="assets/hershield-mockup.png" alt="HER SHIELD" style="width:120px; height:auto; flex-shrink:0; border-radius:6px;">
+        <div>
+          <h4 style="color:var(--navy);">HER SHIELD: Confianza en portación oculta para mujeres</h4>
+          <ul class="ep-bullets">
+            <li>7 capítulos hechos para mujeres</li>
+            <li>Ocultamiento para su vestuario</li>
+            <li>Portar con niños y familia</li>
+            <li>Bono: Portar en pareja</li>
+            <li>Acceso instantáneo — ella empieza esta noche</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font:bold 16px/1.4 Arial; color:var(--red); text-align:center;">⚠️ Este precio de $37 desaparece cuando sales de esta página.</p>
+      <button class="ep-cta" id="exitAccept">¡SÍ! AGREGA HER SHIELD POR SOLO $37</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// 10-minute countdown timer with milliseconds
+(function(){
+  var totalMs = 600000; // 10 minutes in ms
+  var minEl = document.getElementById('cd-min');
+  var secEl = document.getElementById('cd-sec');
+  var msEl = document.getElementById('cd-ms');
+  var last = Date.now();
+  function update(){
+    var now = Date.now();
+    totalMs -= (now - last);
+    last = now;
+    if(totalMs <= 0){ totalMs=0; minEl.textContent='00'; secEl.textContent='00'; msEl.textContent='00'; return; }
+    var m = Math.floor(totalMs/60000);
+    var s = Math.floor((totalMs%60000)/1000);
+    var cs = Math.floor((totalMs%1000)/10);
+    minEl.textContent = (m<10?'0':'')+m;
+    secEl.textContent = (s<10?'0':'')+s;
+    msEl.textContent = (cs<10?'0':'')+cs;
+    requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+})();
+
+// Exit-intent — re-shows every time with 3s cooldown
+(function(){
+  var cooldown = false;
+  var popup = document.getElementById('exitPopup');
+  function closePopup(){ popup.style.display='none'; cooldown=true; setTimeout(function(){ cooldown=false; }, 3000); }
+  document.getElementById('exitClose').addEventListener('click', closePopup);
+  document.getElementById('exitAccept').addEventListener('click', closePopup);
+  document.addEventListener('mouseout', function(e){
+    if(!cooldown && e.clientY < 5 && popup.style.display !== 'flex'){
+      popup.style.display = 'flex';
+    }
+  });
+})();
+</script>
+</body>
+</html>
