@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Success — Certified Concealed First</title>
+<style>
+  :root {
+    --navy: #1D3557;
+    --navy-dark: #152a47;
+    --red: #C1272D;
+    --green: #28a745;
+    --green-dark: #1e7e34;
+    --cream: #f9f8f5;
+    --white: #ffffff;
+    --grey-bg: #ecedf0;
+    --text-dark: #1D3557;
+    --text-muted: #5a6578;
+    --border: #d8dbe2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--grey-bg);
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ========== HEADER (full width) ========== */
+  .header {
+    background: var(--white);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .header-logo-placeholder {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-logo-placeholder img {
+    height: 58px;
+    width: auto;
+  }
+
+  .header-badges {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .header-badges img {
+    height: 52px;
+    width: auto;
+  }
+
+  /* ========== PROGRESS STRIP (full width) ========== */
+  .progress-strip {
+    background: #003156;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .progress-steps {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .progress-contact {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 13px;
+    color: rgba(255,255,255,.8);
+  }
+
+  .progress-contact a {
+    color: rgba(255,255,255,.85);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .progress-contact a:hover { color: var(--white); }
+
+  .progress-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,.45);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .progress-step .step-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba(255,255,255,.45);
+    background: transparent;
+  }
+
+  .progress-step.done { color: #ee0900; }
+  .progress-step.done .step-icon { background: #ee0900; border-color: #ee0900; color: var(--white); }
+  .progress-step.active { color: var(--white); }
+  .progress-step.active .step-icon { border-color: var(--white); background: var(--white); color: #003156; }
+
+  .progress-connector {
+    width: 40px;
+    height: 2px;
+    background: rgba(255,255,255,.2);
+    margin: 0 8px;
+  }
+
+  .progress-connector.done { background: #ee0900; }
+
+  /* ========== WHITE CARD (centered, detached) ========== */
+  .card {
+    background: var(--white);
+    max-width: 720px;
+    margin: 28px auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    overflow: hidden;
+  }
+
+  /* ========== SUCCESS SECTION (top of card) ========== */
+  .success-section {
+    padding: 32px 32px 2px;
+    text-align: center;
+  }
+
+  .success-icon {
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+  }
+
+  .success-icon img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .success-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+
+  .success-headline {
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--navy);
+    line-height: 1.4;
+    margin-bottom: 18px;
+  }
+
+  .discount-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--green);
+    margin-bottom: 28px;
+  }
+
+  /* ========== PRIMARY CTA ========== */
+  .cta-section {
+    padding: 0 32px 12px;
+    text-align: center;
+  }
+
+  .cta-btn {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 22px 28px;
+    background: var(--green);
+    border: none;
+    border-radius: 8px;
+    color: var(--white);
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(40,167,69,.3);
+    animation: pulse 2.5s infinite;
+    letter-spacing: 0.3px;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.015); }
+  }
+
+  .cta-btn:hover { filter: brightness(1.06); }
+
+  .trust-badges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+
+  .trust-badges img {
+    height: 40px;
+    width: auto;
+  }
+
+  /* ========== IMAGE SECTION ========== */
+  .offer-image-section {
+    padding: 20px 32px 8px;
+    text-align: center;
+  }
+
+  .offer-image-section img {
+    max-width: 280px;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ========== BENEFITS LIST ========== */
+  .benefits {
+    padding: 24px 32px 28px;
+    border-top: 1px solid var(--border);
+  }
+
+  .benefits-heading {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--navy);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--text-dark);
+    padding: 8px 0;
+  }
+
+  .benefit-item .b-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 1px;
+  }
+
+  /* ========== SECOND CTA ========== */
+  .second-cta {
+    padding: 0 32px 32px;
+    text-align: center;
+  }
+
+  .second-cta .cta-btn-secondary {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 22px 28px;
+    background: var(--green);
+    border: none;
+    border-radius: 8px;
+    color: var(--white);
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(40,167,69,.3);
+    animation: pulse 2.5s infinite;
+    letter-spacing: 0.3px;
+  }
+
+  .second-cta .cta-btn-secondary:hover { filter: brightness(1.06); }
+
+  /* ========== FOOTER (full width) ========== */
+  .footer {
+    background: var(--white);
+    padding: 20px 28px;
+    max-width: 720px;
+    margin: 0 auto 28px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover { color: var(--navy); }
+
+  .footer-copy {
+    text-align: center;
+    font-size: 11px;
+    color: #aaa;
+    margin-bottom: 12px;
+  }
+
+  .footer-disclaimer {
+    font-size: 10px;
+    line-height: 1.5;
+    color: #bbb;
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .footer-disclaimer strong {
+    display: block;
+    font-size: 10px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    margin-top: 10px;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 600px) {
+    .header { flex-direction: column; text-align: center; padding: 10px 16px; gap: 4px; }
+    .header-logo-placeholder img { height: 56px; }
+    .header-badges { display: none; }
+    .progress-strip { padding: 10px 12px; flex-direction: column; gap: 8px; align-items: center; }
+    .progress-contact { display: none; }
+    .progress-steps { gap: 0; }
+    .progress-step .step-icon { width: 32px; height: 32px; font-size: 14px; }
+    .progress-step { font-size: 14px; font-weight: 700; letter-spacing: 1px; }
+    .progress-connector { width: 28px; height: 4px; margin: 0 6px; border-radius: 2px; }
+    .card { margin: 16px 12px; border-radius: 8px; }
+    .success-section { padding: 24px 20px 18px; }
+    .success-icon { width: 42px; height: 42px; font-size: 22px; margin-bottom: 12px; }
+    .success-title { font-size: 32px; font-weight: 900; margin-bottom: 10px; }
+    .success-headline { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
+    .discount-text { font-size: 17px; margin-bottom: 18px; }
+    .cta-section { padding: 0 20px 10px; }
+    .cta-btn { padding: 18px 20px; font-size: 17px; white-space: nowrap; }
+    .trust-badges { gap: 6px; margin-top: 12px; flex-wrap: nowrap; }
+    .trust-badges img { height: 28px; }
+    .offer-image-section { padding: 14px 20px 8px; }
+    .offer-image-section img { max-width: 200px; }
+    .benefits { padding: 20px; }
+    .benefits-heading { font-size: 22px; margin-bottom: 16px; }
+    .benefits-grid { grid-template-columns: 1fr; max-width: 300px; }
+    .benefit-item { font-size: 16px; }
+    .second-cta { padding: 0 20px 24px; }
+    .second-cta .cta-btn-secondary { padding: 18px 20px; font-size: 17px; white-space: nowrap; }
+    .footer { margin: 0 12px 16px; border-radius: 8px; }
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- ===== HEADER (full width) ===== -->
+  <div class="header">
+    <div class="header-logo-placeholder">
+      <img src="logo.png" alt="Certified Concealed First">
+    </div>
+    <div class="header-badges">
+      <img src="badge-security.png" alt="Norton Secured, McAfee Secure, TRUSTe Privacy" style="height:28px;">
+      <img src="badge-rating.png" alt="Excellent Service Rating — 4.9/5 from 68,000+ Verified Customers">
+      <img src="badge-fast.png" alt="Fast & Simple Process — Average completion time: 15-25 minutes">
+    </div>
+  </div>
+
+  <!-- ===== PROGRESS STRIP (full width) ===== -->
+  <div class="progress-strip">
+    <div class="progress-steps">
+      <div class="progress-step done">
+        <div class="step-icon">✓</div>
+        <span>Verify</span>
+      </div>
+      <div class="progress-connector done"></div>
+      <div class="progress-step active">
+        <div class="step-icon">2</div>
+        <span>Approve</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step">
+        <div class="step-icon">3</div>
+        <span>Apply</span>
+      </div>
+    </div>
+    <div class="progress-contact">
+      <a href="tel:8883471149">📞 (888) 347-1149</a>
+      <a href="mailto:support@concealedqualifyfirst.com">✉ support@concealedqualifyfirst.com</a>
+    </div>
+  </div>
+
+  <!-- ===== WHITE CARD ===== -->
+  <div class="card">
+
+    <!-- SUCCESS + HEADLINE + DISCOUNT + CTA -->
+    <div class="success-section">
+      <div class="success-icon"><img src="green-check.png" alt="Success"></div>
+      <div class="success-title">You Qualify!</div>
+      <div class="success-headline">Your concealed carry permit<br>is ready to be expedited.</div>
+      <div class="discount-text">Save 50% — Today Only</div>
+    </div>
+
+    <div class="cta-section">
+      <a href="#" class="cta-btn">Get My Permit Now</a>
+      <div class="trust-badges">
+        <img src="badge-ssl.png" alt="SSL Encrypted">
+        <img src="badge-clickbank.png" alt="ClickBank Secured">
+        <img src="badge-guarantee.png" alt="60-Day Money Back">
+        <img src="badge-support.png" alt="US-Based Support">
+      </div>
+    </div>
+
+    <!-- IMAGE + BENEFITS -->
+    <div class="offer-image-section">
+      <img src="permit-image.png?v=3" alt="Concealed Carry Permit — Rush Processing">
+    </div>
+
+    <div class="benefits">
+      <div class="benefits-heading">What's Included With Your Permit</div>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <div class="b-icon">✓</div>
+          <span><strong>Expedited</strong> application processing</span>
+        </div>
+        <div class="benefit-item">
+          <div class="b-icon">✓</div>
+          <span>Apply entirely <strong>from home</strong></span>
+        </div>
+        <div class="benefit-item">
+          <div class="b-icon">✓</div>
+          <span><strong>Pre-filled</strong> application forms</span>
+        </div>
+        <div class="benefit-item">
+          <div class="b-icon">✓</div>
+          <span><strong>No</strong> shooting range visit</span>
+        </div>
+        <div class="benefit-item">
+          <div class="b-icon">✓</div>
+          <span><strong>No</strong> fingerprinting needed</span>
+        </div>
+        <div class="benefit-item">
+          <div class="b-icon">✓</div>
+          <span>Skip government <strong>office lines</strong></span>
+        </div>
+        <div class="benefit-item">
+          <div class="b-icon">✓</div>
+          <span>Recognized in <strong>28+ states</strong></span>
+        </div>
+        <div class="benefit-item">
+          <div class="b-icon">✓</div>
+          <span><strong>Act now</strong> — laws may change</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECOND CTA -->
+    <div class="second-cta">
+      <a href="#" class="cta-btn-secondary">Claim My Permit</a>
+      <div class="trust-badges">
+        <img src="badge-ssl.png" alt="SSL Encrypted">
+        <img src="badge-clickbank.png" alt="ClickBank Secured">
+        <img src="badge-guarantee.png" alt="60-Day Money Back">
+        <img src="badge-support.png" alt="US-Based Support">
+      </div>
+    </div>
+
+  </div><!-- /card -->
+
+  <!-- ===== FOOTER ===== -->
+  <div class="footer">
+    <div class="footer-links">
+      <a href="#">Home</a>
+      <a href="#">Contact</a>
+      <a href="#">FAQ</a>
+      <a href="#">State Acceptance</a>
+      <a href="#">Terms &amp; Conditions</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+    <p class="footer-copy">Copyright &copy; 2025 Certified Concealed First. All Rights Reserved.</p>
+    <div class="footer-disclaimer">
+      <strong>Important Disclosure</strong>
+      *WE DO NOT ISSUE CONCEALED CARRY PERMITS. YOU MUST APPLY FOR SUCH PERMITS SEPARATELY.
+      Through your use of this Service, Concealed Qualify First offers information on requirements for obtaining a New Hampshire concealed carry permit through a series of pre-qualifying questions, assistance with completing the required application and information on state reciprocity. Upon successful completion and the payment of the required fee for the issuance of the Application Form DSSP260, you will be able to apply separately for a New Hampshire concealed carry permit.
+
+      <strong>ClickBank</strong>
+      ClickBank is the retailer of this product. CLICKBANK&reg; is a registered trademark of Click Sales, Inc., a Delaware corporation located at 1444 S. Entertainment Ave., Suite 410 Boise, ID 83709, USA and used by permission. ClickBank's role as retailer does not constitute an endorsement, approval or review of this product or any claim, statement or opinion used in promotion of this product.
+
+      <strong>Legal</strong>
+      This product is intended to provide general information only and is not legal advice. We are not attorneys, and using this product does not create an attorney-client relationship. Concealed carry laws differ by state and locality, and it is your responsibility to confirm requirements with the proper authorities and consult a qualified attorney if needed. While we strive to provide accurate and helpful content, we cannot guarantee it is complete or up to date, and we are not liable for any errors, outcomes, or damages related to its use. Testimonials, case studies, and examples found on this page are results that have been forwarded to us by users of Certified Concealed First products and related products and are not intended to represent or guarantee that anyone will achieve the same or similar results.
+    </div>
+  </div>
+
+</body>
+</html>
